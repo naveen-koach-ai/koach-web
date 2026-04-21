@@ -1,0 +1,7 @@
+{
+  "name": "koach-webApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
