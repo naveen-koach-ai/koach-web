@@ -35,3 +35,150 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.custom-lottie-loading {
+  ion-backdrop {
+    background-color: rgba(0, 0, 0, 0.836);
+    opacity: 0.6 !important;
+  }
+  .loading-wrapper {
+    background-color: transparent !important;
+  }
+}
+
+// @font-face {
+//   font-family: "MyriadPro";
+//   src: url(../src/assets/fonts/myriad-pro/MyriadPro-Regular.otf)
+//     format("opentype");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+.input {
+  border: 1px solid var(--ion-color-light-shade);
+  --background: var(--ion-color-light) !important;
+  border-radius: 25px !important;
+  --border-radius: 25px !important; /*for ios*/
+  --padding-start: 15px !important;
+  width: 100%;
+  --placeholder-color: var(--ion-color-light);
+  color: var(--ion-color-light) !important;
+
+  ion-label {
+    display: none !important;
+  }
+
+  ion-input {
+    --placeholder-color: #000 !important;
+    color: #000 !important;
+    --padding-start: 10px !important;
+  }
+
+  ion-select {
+    min-width: 100%;
+    padding: unset;
+    --placeholder-color: var(--ion-color-dark) !important;
+    color: var(--ion-color-dark) !important;
+    --padding-start: 10px !important;
+  }
+
+  ion-select::part(icon) {
+    width: 20px;
+    color: var(--ion-color-tertiary);
+    opacity: 1;
+  }
+  ion-select::part(label) {
+    display: none;
+  }
+
+  ion-textarea {
+    --placeholder-color: var(--ion-color-dark) !important;
+    color: var(--ion-color-dark) !important;
+    .textarea-bottom {
+      border-top: 0px !important;
+      padding-bottom: 0.2rem;
+    }
+  }
+}
+
+.input.ion-touched.ion-invalid {
+  border: 1px solid var(--ion-color-danger);
+  border-radius: 25px !important; /*for ios*/
+}
+
+.input.ion-touched.ion-valid {
+  border: 1px solid var(--ion-color-tertiary);
+  border-radius: 25px !important; /*for ios*/
+}
+
+.yellowed-coloured-text {
+  color: #ffba00;
+}
+
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.d-grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.bg-transparent {
+  --background: transparent !important;
+  background: transparent !important;
+}
+
+.custom-toast {
+  position: fixed !important;
+  top: 40px;
+  right: 10px;
+  left: auto;
+  width: auto; /* Keep the width responsive */
+  min-width: 300px; /* Minimum width for smaller toasts */
+  max-width: 450px; /* Optional: Restrict max width */
+  padding: 10px; /* Add padding for better appearance */
+  border-radius: 8px; /* Rounded corners */
+  z-index: 9999; /* Ensure it's above other elements */
+  color: #fff; /* White text */
+  border: none !important; /* Remove any border */
+  outline: none !important; /* Remove outline */
+}
+.ion-toast-wrapper {
+  height: auto; /* Allow height to adapt to content */
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+.custom-toast .toast-message {
+  font-size: 16px; /* Adjust the font size */
+  padding: 10px 15px; /* Add padding for better appearance */
+  text-align: left; /* Align text to the left */
+}
+
+.custom-toast.ion-color-success {
+  color: #fff; /* White text for contrast */
+}
+
+.custom-toast.ion-color-danger {
+  color: #fff;
+}
+
+.custom-toast.ion-color-primary {
+  color: #fff;
+}
+
+.popup-modal { 
+  --width: 23em !important;
+  --height: 24em !important;
+  --border-radius: 12px;
+}

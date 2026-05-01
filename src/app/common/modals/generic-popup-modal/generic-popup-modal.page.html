@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <div class="container d-flex-column ion-align-items-center ion-justify-content-center">
+      <div class="ion-padding ion-text-center">
+        <img [src]="image" [alt]="alertType" width="64px" />
+      </div>
+
+      <div class="d-flex-column ion-padding ion-text-center">
+        <h2 *ngIf="title">{{ title }}</h2>
+        <ion-label class="fsize-18">{{ message }}</ion-label>
+      </div>
+      <div class="popup-content" *ngIf="commonService.isValidData(userEmail) || commonService.isValidData(password)">
+      <div class="d-flex-row ion-justify-content-between ion-align-items-center ion-margin-bottom">
+        <p class="fsize-20 fw-semi-bold ion-no-margin">Account Details</p>
+        <ion-icon name="copy-outline" slot="start" (click)="copyAll()"></ion-icon>
+      </div>
+
+      <div class="d-flex-column">
+        <div class="credential-item">
+          <ion-label class="fsize-14">
+              Email Address :
+          </ion-label>
+          <p class="ion-no-margin">{{userEmail}}</p>
+        </div>
+
+        <div class="credential-item">
+          <ion-label class="fsize-14">
+              Password :
+          </ion-label>
+          <p class="ion-no-margin">{{password}}</p>
+        </div>
+      </div>
+    </div>
+
+      <div
+        class="ion-justify-content-center ion-padding-horizontal ion-align-items-center"
+        [ngClass]="buttonWrapper === 'flex-column' ? 'd-flex-column' : 'd-flex-row'"
+      >
+        <ion-button
+          [ngClass]="button.buttonCss"
+          [shape]="button.shape"
+          *ngFor="let button of buttonList"
+          (click)="onDismiss(button.event)"
+        >
+          <ion-icon
+            *ngIf="button.icon?.name"
+            [name]="button.icon?.name"
+            [slot]="button.icon.slot"
+          ></ion-icon>
+          <ion-icon
+            *ngIf="button.icon?.src"
+            [src]="button.icon?.src"
+            [slot]="button.icon.slot"
+          ></ion-icon>
+          {{ button.label }}
+        </ion-button>
+      </div>
+  </div>
+</ion-content>
