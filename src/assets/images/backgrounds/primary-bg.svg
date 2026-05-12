@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="361" height="287" viewBox="0 0 361 287">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_15263" data-name="Path 15263" d="M1678-161.8h361v287H1678Z" transform="translate(-1678.001 161.805)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_7176" data-name="Group 7176" clip-path="url(#clip-path)">
+    <g id="Group_7169" data-name="Group 7169" transform="translate(-70.65 -14.437)">
+      <path id="Path_15263-2" data-name="Path 15263" d="M1678-161.8h361v287H1678Z" transform="translate(-1607.351 176.242)" fill="#5833dd"/>
+      <path id="Path_15264" data-name="Path 15264" d="M1668.912-176.242c73.935,0,270.964,126.633,270.964,193.459s-173.283,139.345-247.218,139.345-54.739-145.713-54.739-212.539S1594.977-176.242,1668.912-176.242Z" transform="translate(-1607.497 176.242)" fill="#4524bf"/>
+      <path id="Path_15266" data-name="Path 15266" d="M1661.048-152.54C1709.727-134.872,1858.5,2.671,1834.493,45.606c-24.86,44.459-124.411,14.719-187.671-4.206-49.618-14.844-44.154-73.607-27.295-119.8S1612.37-170.208,1661.048-152.54Z" transform="translate(-1607.547 176.242)" opacity="0.152" style="mix-blend-mode: normal;isolation: isolate"/>
+      <path id="Path_15265" data-name="Path 15265" d="M1909.008-118.415c99.407-29.5,249.086-48.364,267.8,13.669-2.109-10.515,4.311,48.036,4.686,49.8,13.938,65.356-45.127,182.544-169.162,208.85s-266.068-48.23-280.007-113.586S1820.444-92.129,1909.008-118.415Z" transform="translate(-1607.204 176.242)" fill="rgba(0,0,0,0.09)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,67 @@
+@mixin callout-box {
+  padding: 5px;
+  border: 2px solid transparent;
+  filter: drop-shadow(0px 3px 6px #00000029);
+  border-radius: 12px;
+  background: var(--ion-color-white);
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.spout,
+.no-spout {
+  @include callout-box;
+}
+
+.spout-left::after {
+  content: '';
+  width: 2rem;
+  height: 3rem;
+  background-color: white;
+  position: absolute;
+  clip-path: polygon(100% 0, 0 50%, 100% 50%);
+  left: -1.3rem;
+  top: 0.5rem;
+}
+
+.spout-top::after {
+  content: '';
+  width: 3rem;
+  height: 2rem;
+  background-color: white;
+  position: absolute;
+  clip-path: polygon(50% 0%, 0% 100%, 50% 100%);
+  left: 2rem;
+  bottom: 100%;
+}
+
+.spout-bottom::after {
+  content: '';
+  width: 3rem;
+  height: 2rem;
+  background-color: white;
+  position: absolute;
+  clip-path: polygon(50% 0%, 0 0, 50% 100%);
+  left: 2rem;
+  top: 100%;
+}
+
+.container {
+  padding: 1rem 0.5rem;
+}
+
+.overflow-bottom-callout {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% -50%;
+  min-height: 32px;
+}

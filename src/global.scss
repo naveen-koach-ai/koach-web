@@ -25,16 +25,88 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+* {
+  font-family: "myriad-pro", sans-serif;
+  --ion-font-family: "myriad-pro", sans-serif;
+  --ion-default-font: "myriad-pro", sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #000000 0%, #03004c 100%) 0% 0% no-repeat padding-box;
+  min-height: 100vh;
+}
+
+ion-content {
+  --background: transparent;
+}
+
+ion-content::-webkit-scrollbar {
+  --width: 0px !important;
+  --height: 0px !important;
+}
+
+:root {
+  --ion-color-white: #ffffff;
+  --ion-color-white-rgb: 255, 255, 255;
+  --ion-color-white-contrast: #000000;
+  --ion-color-white-contrast-rgb: 0, 0, 0;
+  --ion-color-white-shade: #e0e0e0;
+  --ion-color-white-tint: #ffffff;
+  --ion-color-neon-blue: #00FFE2;
+  --ion-color-neon-blue-rgb: 0, 255, 226;
+  --ion-color-neon-blue-contrast: #000000;
+  --ion-color-neon-blue-contrast-rgb: 0, 0, 0;
+  --ion-color-neon-blue-shade: #00e0c7;
+  --ion-color-neon-blue-tint: #1affe5;
+}
+
+.ion-color-white {
+  --ion-color-base: var(--ion-color-white);
+  --ion-color-base-rgb: var(--ion-color-white-rgb);
+  --ion-color-contrast: var(--ion-color-white-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
+  --ion-color-shade: var(--ion-color-white-shade);
+  --ion-color-tint: var(--ion-color-white-tint);
+}
+
+.ion-color-neon-blue {
+  --ion-color-base: var(--ion-color-neon-blue);
+  --ion-color-base-rgb: var(--ion-color-neon-blue-rgb);
+  --ion-color-contrast: var(--ion-color-neon-blue-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-neon-blue-contrast-rgb);
+  --ion-color-shade: var(--ion-color-neon-blue-shade);
+  --ion-color-tint: var(--ion-color-neon-blue-tint);
+}
+
+swiper.basic-theme-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host(.menu-type-overlay) .menu-inner,
+.ios .menu-content-overlay,
+.ios .menu-content-reveal,
+[dir="rtl"].ios .menu-content-reveal,
+.ios .menu-type-overlay,
+.menu-inner,
+.menu-type-overlay .menu-inner {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  --box-shadow: none !important;
+}
+
+.ion-action-sheet {
+  --padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  // --ion-safe-area-bottom: 0 !important;
+}
+
+.native-wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+}
 
 .custom-lottie-loading {
   ion-backdrop {
@@ -43,6 +115,8 @@
   }
   .loading-wrapper {
     background-color: transparent !important;
+    webkit-box-shadow: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -182,3 +256,12 @@
   --height: 24em !important;
   --border-radius: 12px;
 }
+
+.emails-for-report-modal {
+  --width: 90% !important;
+  --height: 45% !important;
+  margin: 0 auto !important;
+  --border-radius: 12px;
+}
+
+

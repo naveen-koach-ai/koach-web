@@ -1,0 +1,61 @@
+<ion-content color="white" class="no-padding ion-text-center">
+
+  <ion-grid class="p-0 main">
+    <ion-row class="top" [class]="bgClass">
+      <ion-col class="flex-me">
+        <ion-img [src]="logo || '/assets/images/es-placeholder.png'"
+          class="mx-auto my-3 logo">
+        </ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="middle">
+      <ion-col class="flex-me-column">
+        <p class="m-0 szie-15 fw-semi-bold title" *ngFor="let title of titles" [innerHTML]="title"> </p>
+        <p class="m-0 mt-3 mb-1 szie-15 sub-title" [hidden]="sub_title.length == 0" *ngFor="let sub_title of subTitles"
+          [innerHTML]="sub_title"> </p>
+        <!-- Input -->
+        <ion-input class="size-16 mb-3 mt-3" [type]="input?.type" [placeholder]="input?.placeholder"
+          [(ngModel)]="userInput" *ngIf="showInput"
+          [ngClass]="{'invalid-input animate__animated animate__shakeX': isValidInput}"></ion-input>
+        <ion-text color="danger">
+          <p *ngIf="showInput && isValidInput" class="mb-3 size-15 sub-title">{{errorMsg}}</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="bottom">
+      <ion-col class="flex-me">
+
+        <!-- Text Button -->
+        <p class="m-0" *ngIf="textButtonContents.length > 0">
+          <ion-button *ngFor="let button of textButtonContents"
+            class="generic__button btn-white btn-100 size-15 fw-semi-bold" style="color: #003DB7;"
+            (click)="onClick(button.event)">
+            {{button.content || "Text Button Content"}}
+          </ion-button>
+        </p>
+        <!-- Buttons -->
+        <p class="m-0" *ngIf="buttonContents.length > 0">
+          <ion-button *ngFor="let button of buttonContents"
+            class="generic__button btn-yellow btn-100 size-15 fw-semi-bold" (click)="onClick(button.event)">
+            {{button.content || 'Button Content'}}
+          </ion-button>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="commonService.isValidData(appInfo)">
+      <ion-col class="ion-text-center">
+        <div id="update-button">
+          <a [href]="appStoreUrl">Update</a>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+
+
+</ion-content>

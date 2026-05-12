@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="102.447" height="97.135" viewBox="0 0 102.447 97.135">
+  <g id="Group_57624" data-name="Group 57624" transform="translate(-112.5 -246.648)">
+    <g id="Group_51917" data-name="Group 51917" transform="translate(116.042 249.527)">
+      <g id="Path_35027" data-name="Path 35027" transform="translate(-682.192 -37.872)" fill="none">
+        <path d="M729.97,37.872l47.777,34.712L759.5,128.75H700.442L682.192,72.584Z" stroke="none"/>
+        <path d="M 729.9698486328125 39.10776519775391 L 683.367919921875 72.96604156494141 L 701.1682739257812 127.7498779296875 L 758.7713623046875 127.7498779296875 L 776.5716552734375 72.96604156494141 L 729.9698486328125 39.10776519775391 M 729.9698486328125 37.8717041015625 L 777.7472534179688 72.58407592773438 L 759.4979248046875 128.7498779296875 L 700.4417114257812 128.7498779296875 L 682.1923217773438 72.58407592773438 L 729.9698486328125 37.8717041015625 Z" stroke="none" fill="#00f7c8"/>
+      </g>
+      <path id="Path_35028" data-name="Path 35028" d="M754.646,128.75l29.528-90.878L813.7,128.75" transform="translate(-736.397 -37.872)" fill="none" stroke="#fff" stroke-width="1"/>
+      <path id="Path_35029" data-name="Path 35029" d="M761.26,128.75,684.548,72.807l94.962-.256L702.2,128.75l29.528-90.878L761.26,128.75" transform="translate(-683.955 -37.872)" fill="none" stroke="#00f7c8" stroke-width="1"/>
+    </g>
+    <ellipse id="Ellipse_1446" data-name="Ellipse 1446" cx="3.415" cy="3.535" rx="3.415" ry="3.535" transform="translate(160.308 246.648)" fill="#00f7c8"/>
+    <circle id="Ellipse_1450" data-name="Ellipse 1450" cx="3.415" cy="3.415" r="3.415" transform="translate(112.5 281.556)" fill="#00f7c8"/>
+    <circle id="Ellipse_1447" data-name="Ellipse 1447" cx="3.415" cy="3.415" r="3.415" transform="translate(208.117 281.556)" fill="#00f7c8"/>
+    <ellipse id="Ellipse_1449" data-name="Ellipse 1449" cx="3.415" cy="3.389" rx="3.415" ry="3.389" transform="translate(131.472 337.004)" fill="#00f7c8"/>
+    <ellipse id="Ellipse_1448" data-name="Ellipse 1448" cx="3.415" cy="3.389" rx="3.415" ry="3.389" transform="translate(189.904 337.004)" fill="#00f7c8"/>
+  </g>
+</svg>

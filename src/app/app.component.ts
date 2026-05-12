@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './common/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   standalone: false,
 })
-export class AppComponent {
-  constructor() {
-    window.localStorage.setItem('auth_token', 'QwEUIwYyJg0MI0QkKzwCf0ZjAiwKZBhjVAcuIFgZCh49Om4kW0cdTz0cM1YvHBdmMA0iACdiLAQnAGIqJ1ghTBNaJzIoHTsDMw8hPT9jLwMjHGE6BV0hTDFGJzIvRTl2JBw3BCA7L1wsXGADJwA0dT0dDj07QT9bDg08AyQUKAcSBU5cDgcaWyFGIg8JHRVfNwghKiQ+AgNcXU4oWxkidT4bIgg3Wy9mLws3Pjs5LS0vFXc5OA8hBE5GMTYwGz9bLFYgKicjKAMjCkk2NBkidT4bIg8eGDllDQg0Pj9gLTosX3cEJx02cSJXJQxJGC9LJFEhPSQ5Lzk3BXcDJAM2XDJXMTYwXj9cOx03Pjg2AlwzFk5cDh8aWDpEJA84Xj9cUAgPBzwmAgJcFnc2LBMZYU5YCBwwGxNIKxMOWjwlKAQKG2EtKAMZcRtZMTYwGztyFg00WwY4BS0sWmAmUhoxWyFYMSNARi9pMwgkAwE5LAQkFWItUh41X0dUJDY4Wjt1DhMgLQEnLC0sH2QDOBAiYSFLDyIRQRRmNx4kAx49ODkdFnc9FQAaW05LMjIrVz9bEVQOBzg8LS0vHE5eOAIhWzFHClU3WxRfOA0iBzwpBTkwH2QDDhMtcU5XDyAjRi9cJw4MECdmBSYvXXc9FQAbcU5XDyE0Hzt3WB4JL1c7ODY3AGQEDQA1XDZUJTZJWjhYURMjEC8nLCoKG2AqDR41dT5eIggVRRJyKFIgPQ1jLxQ8FGIqI1w3bkcDIA8OYiZoEgsZM1g/DDgXFGQsCCITfRZKBQYDSkdAWS0DJAUWMCIAQUUCK0s=');
+export class AppComponent implements OnInit {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+  ) {}
+
+  async ngOnInit() {
+    const token = sessionStorage.getItem('token');
+    const userData = sessionStorage.getItem('user');
+
+    if (!token || !userData) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
+
+    await this.userService.decodingJWTValues(token);
+    this.userService.user.next(JSON.parse(userData));
   }
 }

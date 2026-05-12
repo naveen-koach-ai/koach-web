@@ -4,7 +4,7 @@ import { throwError, timer } from 'rxjs';
 import { catchError, mergeMap, retryWhen } from 'rxjs/operators';
 
 import { FALLBACK_ERROR_MESSAGES_FOR_INTERCEPTORS } from '../constants/constants';
-import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 const MAX_RETRIES = 2;
 const RETRY_DELAY = 1000; // 1 second delay between retries
@@ -17,13 +17,13 @@ const RETRYABLE_STATUS_CODES = [
 ];
 
 export const httpRequestInterceptor: HttpInterceptorFn = (request, next) => {
-  const apiService = inject(ApiService);
+  const router = inject(Router);
 
   // Start with the timezone header for all requests
   let headers = request.headers.set('X-timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
 
   // Add authorization header if token exists
-  const token = window.localStorage.getItem('auth_token');
+  const token = window.sessionStorage.getItem('token');
 
   if (token) {
     headers = headers.set('Authorization', `Bearer ${token}`);
@@ -81,8 +81,8 @@ export const httpRequestInterceptor: HttpInterceptorFn = (request, next) => {
 
           error.error.message = error.error.message || FALLBACK_ERROR_MESSAGES_FOR_INTERCEPTORS.ERROR_MESSAGE_401;
           // Clear stored credentials
-          apiService.logout();
-
+          sessionStorage.clear();
+          router.navigate(['login']);
           return throwError(() => (error));
 
         case HttpStatusCode.Forbidden: // 403

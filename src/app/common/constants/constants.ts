@@ -64,7 +64,23 @@ export const API_ENDPOINTS = {
 
   VERIFY_REFERRAL_CODE: 'verify-referral-code',
   GET_DROPDOWNS_ONBOARDING: 'get-dropdowns',
-  VALIDATE_EMAIL: 'auth/validate-email/'
+  VALIDATE_EMAIL: 'auth/validate-email/',
+
+  MISCELLAENOUS_CONV : `miscellaenous-conversations`,
+
+  PRE_ASSESSMENT: 'get-questions',
+  PRE_ASSESSMENT_SESSION_CLOSE: 'onboard-close-session',
+
+  SESSION_REPORT: 'view-report',
+  GROW_MODEL: 'grow-model/',
+  OVERALL_VALUES: `overall-comp-values`,
+  ST_ASP_REPORT: 'st-asp-report',
+  CONSOLIDATED_FEEDBACK_REPORT: '/consolidated-reports',
+  SHARE_REPORT: 'share/add',
+  SEND_REPORT_BY_EMAIL: 'share/send-report',
+  
+  MISCELLAENOUS_BULK_QUES: `bulk-questions`,
+  MISCELLAENOUS_BULK_RESP: `misc-close-session`
 };
 
 export const FALLBACK_ERROR_MESSAGES_FOR_INTERCEPTORS = {
@@ -78,3 +94,29 @@ export const FALLBACK_ERROR_MESSAGES_FOR_INTERCEPTORS = {
   ERROR_MESSAGE_502: 'The server is currently unavailable. Please try again later.',
   DEFAULT_ERROR_MESSAGE: 'An unexpected error occurred. Please try again later.',
 };
+
+export const CONVERSATION_IDS = {
+  Development_Dimensions: '60feca78-be99-41e9-a0c9-a9428a02ca09'
+}
+
+export const EZ_POPUP_EVENTS = {
+    NONE: 'NONE',
+    CANCEL: 'CANCEL',
+    CLOSE_APP: 'CLOSE_APP',
+    BACK: 'BACK',
+    LOGOUT: 'LOGOUT',
+    VALIDATE: 'VALIDATE',
+    CANCEL_CHAT: 'CANCEL_CHAT',
+    END_CHAT: 'END_CHAT',
+    TRY_AGAIN: 'TRY_AGAIN',
+    HOME: 'HOME',
+    LOGIN: 'LOGIN',
+    VALID: 'VALID',
+    INVALID: 'INVALID',
+    CHAT_VALID: 'CHAT_VALID',
+    RETRY: 'RETRY',
+    UPDATE: 'UPDATE',
+    WANT_MENTOR_CHAT: 'WANT_MENTOR_CHAT',
+    RESET_THEME: 'RESET_THEME',
+    SIGNUP: 'SIGNUP',
+  };

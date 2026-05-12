@@ -1,0 +1,35 @@
+.question-div {
+  background: linear-gradient(180deg, #03004C 0%, #010137 100%) 0% 0% no-repeat padding-box;
+  padding: 3% 3% 3%;
+  white-space: break-spaces;
+  display: flex;
+  flex-direction: column;
+
+  transition: all 1s;
+  
+  p {
+    padding: 0 !important;
+    padding-inline-start: 0 !important;
+    color: var(--ion-color-light);
+  }
+
+  .question-image {
+    width: 235px !important;
+    aspect-ratio: 1/1;
+  }
+}
+
+.difficulty-increase {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  ion-icon {
+    color: orange !important;
+  }
+}
+
+.translate-btn {
+  margin-left: auto;
+  order: 2;
+}

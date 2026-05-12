@@ -1,0 +1,14 @@
+<div class="spout" [ngClass]="pos">
+  <div class="container">
+    <ion-label [innerHTML]="question" [ngClass]="[fsize, fweight]"></ion-label>
+
+    @if (showButton) {
+      <ion-button [color]="button.color" [shape]="button.shape" class="overflow-bottom-callout" (click)="emitEvent()">
+        @if (button.icon_slot !== 'slot-only') {
+          <ion-label>{{ button.label }}</ion-label>
+        }
+        <ion-icon [name]="button.icon_name" [ngClass]="button.icon_font" [slot]="button.icon_slot"></ion-icon>
+      </ion-button>
+    }
+  </div>
+</div>

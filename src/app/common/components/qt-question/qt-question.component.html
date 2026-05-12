@@ -1,0 +1,37 @@
+<section class="chat-container" [ngStyle]="{'align-items': question.q_type_id === 'UR' ? 'flex-end' : 'flex-start'}">
+  <div [ngClass]="question.q_type_id === 'UR' ? 'user-callout animate__bounceInRight' : 'wizbot-callout animate__bounceInLeft'" class="animate__animated">
+    <ion-label [innerText]="question.q_text"></ion-label>
+
+    <ion-button size="small" fill="clear" color="dark" class="ion-float-end ion-no-margin translate-btn" (click)="translate(question.q_text, 'question')" *ngIf="!alreadyTranslatedQuestion">
+      <ion-icon src="/assets/icons/translate-icon.svg" slot="start" class="fsize-16"></ion-icon>
+      {{commonService.translateCount | async}}
+    </ion-button>
+    <ion-button fill="clear" color="dark" style="display: block;" (click)="question.q_text = ogQuestionTest; alreadyTranslatedQuestion = !alreadyTranslatedQuestion;" *ngIf="alreadyTranslatedQuestion">
+      Back to English
+    </ion-button>
+    
+    <!-- <div class="chat-bubble-tail"></div> -->
+  </div>
+
+  <div class="animate__animated animate__delay-1s animate__bounceInUp quick-tip" *ngIf="!isFlashcardSelected">
+    <ion-item lines="none" class="bg-transparent ion-margin-vertical">
+      <ion-icon name="bulb" color="warning" slot="start"></ion-icon>
+      <ion-label class="fw-semi-bold">{{ question.quick_tip?.qt_text }}</ion-label>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button size="small" color="warning" class="btn-w220 generic__button btn-yellow" (click)="selectedFlashcard($event)">{{ question.flashcards[0].fc_option_text }}</ion-button>
+      </ion-col>
+      <ion-col size="12" [ngClass]="alreadyTranslated ? 'ion-text-center' : 'ion-text-end'">
+        <ion-button size="small" fill="clear" color="dark" class="ion-float-end ion-no-margin translate-btn" (click)="translate(question.quick_tip?.qt_text, 'flashcard')" *ngIf="!alreadyTranslatedFlashcards">
+          <ion-icon src="/assets/icons/translate-icon.svg" slot="start" class="fsize-16"></ion-icon>
+          {{commonService.translateCount | async}}
+        </ion-button>
+        <ion-button fill="clear" color="dark" style="display: block;" (click)="question.flashcard[0].fc_display_text = ogFCtext; alreadyTranslatedFlashcards = !alreadyTranslatedFlashcards;" *ngIf="alreadyTranslatedFlashcards">
+          Back to English
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</section>

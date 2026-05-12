@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="361" height="287.362" viewBox="0 0 361 287.362">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_15263-2" data-name="Path 15263-2" d="M1537.726,47.65h361V311.685s-82.6,23.326-176.938,23.326c-89.847,0-184.062-23.326-184.062-23.326Z" transform="translate(-1537.726 -47.65)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_4375" data-name="Rectangle 4375" width="361" height="382.848" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_46889" data-name="Group 46889" transform="translate(-1537.726 -55.878)">
+    <g id="Group_46888" data-name="Group 46888" transform="translate(1537.726 55.878)" clip-path="url(#clip-path)">
+      <g id="Group_46887" data-name="Group 46887" transform="translate(0 0)">
+        <g id="Group_46886" data-name="Group 46886" clip-path="url(#clip-path-2)">
+          <path id="Path_15263-2-2" data-name="Path 15263-2" d="M1537.726,56.45h361V441.02h-361Z" transform="translate(-1537.725 -56.451)" fill="#5c18ef"/>
+          <path id="Path_15264" data-name="Path 15264" d="M1528.492,35.4c73.934,0,270.964,169.684,270.964,259.229s-173.283,186.717-247.218,186.717S1497.5,286.1,1497.5,196.557,1454.557,35.4,1528.492,35.4Z" transform="translate(-1537.725 -54.758)" fill="#4d00c6"/>
+          <path id="Path_15266" data-name="Path 15266" d="M1520.577,69.487C1569.257,93.162,1718.03,277.465,1694.023,335c-24.86,59.573-124.411,19.722-187.671-5.636-49.619-19.89-44.155-98.631-27.3-160.528S1471.9,45.814,1520.577,69.487Z" transform="translate(-1537.725 -57.08)" opacity="0.152" style="mix-blend-mode: normal;isolation: isolate"/>
+          <path id="Path_15265" data-name="Path 15265" d="M1768.883,116.443c99.407-39.529,249.086-64.805,267.8,18.316-2.109-14.09,4.311,64.367,4.686,66.73,13.938,87.575-45.127,244.6-169.162,279.852s-266.071-64.626-280.01-152.2S1680.316,151.668,1768.883,116.443Z" transform="translate(-1537.725 -58.31)" opacity="0.16" style="mix-blend-mode: normal;isolation: isolate"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

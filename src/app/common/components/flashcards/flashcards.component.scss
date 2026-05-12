@@ -1,0 +1,37 @@
+.segment-flashcards {
+  flex-direction: column;
+  padding: 35px 0;
+  background: #ffffff4f;
+  border-radius: 25px;
+}
+
+ion-segment-button {
+  font-size: 15px;
+  text-transform: inherit;
+  border: 1px solid #89FEDA;
+  border-radius: 25px;
+  margin: 5px 0;
+  width: 100%;
+  text-wrap: wrap;
+
+  --background: var(--ion-color-white);
+  --color: var(--ion-color-dark-tint);
+  --indicator-height: 0;
+  --background-checked: #0FDDC9;
+  --color-checked: var(--ion-color-dark);
+
+  ion-label {
+    white-space: break-spaces !important;
+    width: 15.75rem !important;
+  }
+}
+
+.translate-btn {
+  margin-top: 1rem;
+  margin-left: auto;
+  order: 2;
+}
+
+ion-button {
+  display: inline-flex !important;
+}

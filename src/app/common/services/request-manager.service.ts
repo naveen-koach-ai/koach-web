@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment.test';
 export class RequestManagerService {
 
   url: string = '';
+  isTesting: boolean = environment.env === 'LIVE' ? false : true;
 
   constructor(
     private http: HttpClient,

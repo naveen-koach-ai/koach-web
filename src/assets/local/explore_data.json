@@ -1,0 +1,30 @@
+{
+  "strengths": [
+    {
+      "heading": "What is a working preference?",
+      "description": "Your working preferences tell you about how you chose to operate in the work space. It shows aspects that encompass people / tasks/ communication style / decision making among others."
+    },
+    {
+      "heading": "Why is it important?",
+      "description": "It is a window into your behaviour patterns that are understandable. It is also a mirror of how people see you."
+    },
+    {
+      "heading": "How does it help you?",
+      "description": "You can anchor yourself in situations knowing what you are good at. You can seek to develop areas that you may need for specific situations."
+    }
+  ],
+  "aspirations": [
+    {
+      "heading": "What motivates you?",
+      "description": "This defines the aspects that you want to get and achieve by way of either success or a progression in anything that you do. These seek to identify your core motivations in doing any job / task that comes your way or is a part of your work."
+    },
+    {
+      "heading": "Why is it important",
+      "description": "Motivations remain our most powerful reason to achieve any outcome. These motivations drive our thinking and desire to work hard and deliver results."
+    },
+    {
+      "heading": "How does it help you?",
+      "description": "Knowing why you want to succeed is important and you will have a clear idea of what drives you. You can gauge if you are in an enabling environment that meets your aspirations."
+    }
+  ]
+}

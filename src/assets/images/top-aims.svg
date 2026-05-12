@@ -1,0 +1,21 @@
+<svg id="Group_3650" data-name="Group 3650" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="122.85" height="126.387" viewBox="0 0 122.85 126.387">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_602" data-name="Ellipse 602" cx="61.425" cy="61.425" r="61.425" fill="none"/>
+    </clipPath>
+  </defs>
+  <circle id="Ellipse_601" data-name="Ellipse 601" cx="61.425" cy="61.425" r="61.425" transform="translate(0 3.537)" fill="#c2ecff"/>
+  <rect id="Rectangle_666" data-name="Rectangle 666" width="1.564" height="40.276" transform="translate(59.977)" fill="#583c1c"/>
+  <path id="Path_6043" data-name="Path 6043" d="M176.328,86.9s14.442-1.469,13.456,1.327,9.2,3.064,14.026,1.723c0,0-1.072,4.29-2.144,10.188s-17.427,2.413-16.086,0S176.4,98.8,176.4,98.8Z" transform="translate(-114.854 -85.205)" fill="#ff4622"/>
+  <g id="Group_3649" data-name="Group 3649" transform="translate(0 3.537)">
+    <g id="Group_3648" data-name="Group 3648" clip-path="url(#clip-path)">
+      <path id="Path_6044" data-name="Path 6044" d="M208.375,138.306l-35.122,69.736H243.5Z" transform="translate(-115.609 -76.042)" fill="#f0cb6d"/>
+      <path id="Path_6045" data-name="Path 6045" d="M236.581,208.042l-35.122-69.736v69.736Z" transform="translate(-108.692 -76.042)" fill="#272425" opacity="0.14"/>
+      <path id="Path_6046" data-name="Path 6046" d="M175.865,111.33v100.8h42.673Z" transform="translate(-114.968 -82.657)" fill="#f0cb6d"/>
+      <path id="Path_6047" data-name="Path 6047" d="M155,133.5l-35.122,69.736h70.245Z" transform="translate(-128.696 -77.22)" fill="#f0cb6d"/>
+      <path id="Path_6048" data-name="Path 6048" d="M183.2,203.236,148.083,133.5v69.736Z" transform="translate(-121.78 -77.22)" fill="#272425" opacity="0.14"/>
+      <path id="Path_6049" data-name="Path 6049" d="M184.2,111.11,141.409,212.183h42.9v-100.8Z" transform="translate(-123.416 -82.71)" fill="#f0cb6d"/>
+      <path id="Path_6050" data-name="Path 6050" d="M175.865,111.33v100.8h42.673Z" transform="translate(-114.968 -82.657)" fill="#272425" opacity="0.14"/>
+    </g>
+  </g>
+</svg>

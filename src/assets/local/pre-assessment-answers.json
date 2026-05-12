@@ -1,0 +1,252 @@
+[
+  {
+    "q_uuid": "7ccb07d2-6dd8-477c-a3b3-98e3040f30be",
+    "opt_type_uuid": "7a2e062a-9b63-4c77-a268-ab5cd7151e38",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "62ffa2b1-ee51-4563-929d-47d60742d0e0",
+    "opt_type_uuid": "bd768225-0369-4e95-935b-85f2355dd25b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "a3123580-0d93-4d45-9d18-e75802d82370",
+    "opt_type_uuid": "f74b37f0-8329-4142-93dc-75c3056b9f24",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "4ab34624-e05e-44c7-a561-3a6b7cc6e369",
+    "opt_type_uuid": "0455f9e1-f5d0-46cd-953c-3eb71979df0b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "9f2338da-ed7f-4d61-8408-63c00240942e",
+    "opt_type_uuid": "7a2e062a-9b63-4c77-a268-ab5cd7151e38",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 50,
+    "coins_earned": 5,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "b60fa679-ce49-4160-b63d-6d547d451af4",
+    "opt_type_uuid": "0455f9e1-f5d0-46cd-953c-3eb71979df0b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "976f2670-945f-4603-bd02-fc97df7e12ee",
+    "opt_type_uuid": "7a2e062a-9b63-4c77-a268-ab5cd7151e38",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "25d855a4-3e1c-4a13-a352-7689f23403d0",
+    "opt_type_uuid": "f74b37f0-8329-4142-93dc-75c3056b9f24",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "51ef1b22-1794-440a-b8b0-86973c75af57",
+    "opt_type_uuid": "0455f9e1-f5d0-46cd-953c-3eb71979df0b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "94a1619d-2a5e-49a3-8055-e29dd210dd16",
+    "opt_type_uuid": "bd768225-0369-4e95-935b-85f2355dd25b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "a4597fb3-ff8b-44f3-a026-6e93b8540398",
+    "opt_type_uuid": "7a2e062a-9b63-4c77-a268-ab5cd7151e38",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 50,
+    "coins_earned": 5,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "bbdb9375-cd37-4e55-a135-de2ab89ec2bc",
+    "opt_type_uuid": "f74b37f0-8329-4142-93dc-75c3056b9f24",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "8d236b0e-eebe-4e6f-bfba-2b22765f7144",
+    "opt_type_uuid": "05936711-feb9-4696-9aad-5c96ba749cf0",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "d27a7865-aa31-46e6-b839-4179327586f4",
+    "opt_type_uuid": "0455f9e1-f5d0-46cd-953c-3eb71979df0b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 50,
+    "coins_earned": 5,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "44e2a3bc-d1f3-46aa-aaeb-9a64d369499d",
+    "opt_type_uuid": "7a2e062a-9b63-4c77-a268-ab5cd7151e38",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "6e9f9e36-41da-4aa9-a09a-e497ae3f923c",
+    "opt_type_uuid": "05936711-feb9-4696-9aad-5c96ba749cf0",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "c893d16d-cc23-4c7a-967f-f7b9d6afd5f0",
+    "opt_type_uuid": "0455f9e1-f5d0-46cd-953c-3eb71979df0b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "7b9fec98-7b23-4564-a414-4c86a304c106",
+    "opt_type_uuid": "05936711-feb9-4696-9aad-5c96ba749cf0",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "3da24ad7-d083-4dda-bc0a-1d805fb15733",
+    "opt_type_uuid": "f74b37f0-8329-4142-93dc-75c3056b9f24",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "ccaf136a-a8ab-4328-a6b1-1b13783d00f9",
+    "opt_type_uuid": "bd768225-0369-4e95-935b-85f2355dd25b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "0e27d075-9a23-401e-b6f7-aa1615030dba",
+    "opt_type_uuid": "05936711-feb9-4696-9aad-5c96ba749cf0",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "87857600-6189-42fd-a860-519c4f0d173c",
+    "opt_type_uuid": "bd768225-0369-4e95-935b-85f2355dd25b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "a11cc361-2288-480d-9450-11b1f905f61b",
+    "opt_type_uuid": "05936711-feb9-4696-9aad-5c96ba749cf0",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "18585d5a-1d0a-4e06-80da-d632c4382c91",
+    "opt_type_uuid": "f74b37f0-8329-4142-93dc-75c3056b9f24",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 65,
+    "coins_earned": 6,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  },
+  {
+    "q_uuid": "1beef0cc-6a75-449a-9d1a-58314e7067f3",
+    "opt_type_uuid": "bd768225-0369-4e95-935b-85f2355dd25b",
+    "bot_conv_id": "7b56c9f5-d226-471c-9b5e-0d8f413f2287",
+    "is_correct": 80,
+    "coins_earned": 8,
+    "total_coins": 10,
+    "conv_uuid": "60feca78-be99-41e9-a0c9-a9428a02ca09",
+    "cur_uuid": "d1685b5b-ff55-4137-bf2a-5daf48717f5d"
+  }
+]

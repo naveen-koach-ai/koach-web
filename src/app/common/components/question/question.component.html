@@ -1,0 +1,17 @@
+<div class="question-div" [ngStyle]="{'box-shadow': difficultyIncreaseFlag ? '1px 2px 69px 3px rgba(232, 109, 26, 0.27) inset' : '' }">
+  <ion-item lines="none" class="bg-transparent difficulty-increase" *ngIf="difficultyIncreaseFlag">
+    <ion-icon name="arrow-up-outline" slot="start" class="mr-2"></ion-icon>
+    <ion-label class="fsize-12">Difficulty Increased</ion-label>
+  </ion-item>
+  <!-- <ion-img class="question-image mx-auto ion-margin-bottom" *ngIf="question?.q_type_id === 'FMQ' && question?.q_media_link !== null && question?.q_media_link?.length > 0 
+    && question?.q_media_link.includes('png', 'jpg', 'jpeg')" [src]="question?.q_media_link">
+  </ion-img>
+  <img class="question-image mx-auto ion-margin-bottom" *ngIf="question?.q_type_id === 'FMQ' && question?.q_media_link !== null && question?.q_media_link?.length > 0 
+    && question?.q_media_link.includes('gif')" [src]="question?.q_media_link" />  -->
+  <audio controls controlsList="nodownload" class="question-image mx-auto ion-margin-bottom" *ngIf="question?.q_type_id === 'FMQ' && question?.q_media_link !== null 
+    && question?.q_media_link?.length > 0 && question?.q_media_link.includes('mp3')">
+    <source [src]="question?.q_media_link" />
+  </audio>
+
+  <p class="ion-padding ion-text-start" [innerHTML]="question?.q_text || ''" [ngStyle]="{'direction': commonService.selectedLang.getValue() === 'ar' && alreadyTranslated ? 'rtl' : 'ltr'}"></p>
+</div>

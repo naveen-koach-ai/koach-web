@@ -1,0 +1,14 @@
+.profile-halo-wrapper {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &.gradient-border {
+    padding: 3px;
+    background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<ion-header [class.ion-no-border]="noBorder">
+  <ion-toolbar color="dark" mode="ios" [ngStyle]="{ 'padding-top': platform === 'ios' ? 'var(--ion-safe-area-top, 0)' : '0' }">
+    @if (showBackButton) {
+      <ion-buttons slot="start">
+        <ion-button color="light" (click)="backClick.emit()">
+          <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
+    @if (title) {
+      <ion-title color="light">{{ title }}</ion-title>
+    }
+    <ion-buttons slot="end">
+      <ng-content select="[slot=header-end]"></ng-content>
+      <ion-button (click)="openMenu($event)" fill="clear" color="light" class="ion-no-padding">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-popover side="bottom" alignment="end" [isOpen]="isMenuOpen" [event]="popoverEvent" (didDismiss)="isMenuOpen = false">
+  <ng-template>
+    <ion-list lines="none">
+      <ion-item button (click)="logout()" detail="false">
+        <ion-icon name="log-out-outline" slot="start" color="danger"></ion-icon>
+        <ion-label color="danger">Logout</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>

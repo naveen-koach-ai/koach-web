@@ -1,0 +1,77 @@
+{
+  "questions": [
+    {
+      "question_text": "I’m your change partner — here to help you grow and develop, every step of the way.",
+      "type": "NRQ",
+      "question_order": 0
+    },
+    {
+      "question_text": "Real growth starts with feedback. Which of these will help you<strong> move the needle</strong>",
+      "type": "question",
+      "flashcards": [
+        {
+          "fc_display_text": "Ask for feedback and<strong> act on it</strong>",
+          "bot_response": "Getting your dream job is  important. I am there for you  this journey.",
+          "icon": "/assets/images/onboarding/managing-self.svg"
+        },
+        {
+          "fc_display_text": "Take one <strong>validated action</strong>",
+          "bot_response": "Financial success is necessary  in your career. I will enable you to get there!",
+          "icon": "/assets/images/onboarding/professional-awareness.svg"
+        },
+        {
+          "fc_display_text": "Practice a new behaviour and <strong>get input</strong>",
+          "bot_response": "Improving your performance is critical to career growth. I am your partner in this!",
+          "icon": "/assets/images/onboarding/growth-mindset.svg"
+        },
+        {
+          "fc_display_text": "Reflect, decide, and <strong>do it differently</strong>",
+          "bot_response": "Better opportunities is your gateway to  career growth. I will work hard on this!",
+          "icon": "/assets/images/onboarding/professional-awareness.svg"
+        },
+        {
+          "fc_display_text": "Review feedback and<strong> iterate fast</strong> ",
+          "bot_response": "Being an expert at what you do it necessary! I an here to build your expertise!",
+          "icon": "/assets/images/onboarding/managing-other.svg"
+        }
+      ],
+      "question_order": 1
+    },
+    {
+      "question_text": "Real change happens when you commit and others <strong>validate</strong> your growth. How will you stay accountable?",
+      "type": "question",
+      "flashcards": [
+        {
+          "fc_display_text": "Make a <strong>public commitment</strong> to change",
+          "bot_response": "Knowledge is important to success, but the right attitude is super critical!"
+        },
+        {
+          "fc_display_text": "Ask someone to <strong>validate my progress</strong>",
+          "bot_response": "You have got that right. Your attitude often determines how far you will go!"
+        },
+        {
+          "fc_display_text": "Share my goal and <strong>invite accountability</strong>",
+          "bot_response": "Skill is certainly important, but the right attitude will take you farther ahead!"
+        },
+        {
+          "fc_display_text": "Set a <strong>milestone</strong> and crack it"
+        },
+        {
+          "fc_display_text": "Check in with my team <strong>every week</strong>"
+        }
+      ],
+      "question_order": 2
+    },
+    {
+      "question_text": "Great! And my role is to help you <strong>attract personal success</strong> instead of chasing it. Bringing out the <strong>best in you</strong>.",
+      "type": "final",
+      "button": [
+        {
+          "fc_display_text": "Explore Personal Development",
+          "bot_response": "Great! Let's go..."
+        }
+      ],
+      "question_order": 3
+    }
+  ]
+}

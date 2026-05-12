@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#border {
+  #Ellipse_1441 {
+    fill: #ffffff !important;
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  from,
+  to,
+  9%,
+  25%,
+  38% {
+    transform: rotateX(35deg);
+  }
+
+  17%,
+  30% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes blinkv2 {
+  from,
+  to,
+  9%,
+  25%,
+  38% {
+    transform: none;
+  }
+
+  17%,
+  30% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes nod {
+  from,
+  to,
+  9%,
+  25%,
+  38% {
+    transform: rotateX(30deg);
+  }
+
+  17%,
+  30% {
+    transform: rotateX(44deg);
+  }
+}
+
+@keyframes nodv2 {
+  from,
+  to,
+  9%,
+  25%,
+  38% {
+    transform: rotateX(0deg);
+  }
+
+  17%,
+  30% {
+    transform: rotateX(44deg);
+  }
+}
+
+@keyframes halo {
+  from,
+  to {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+}
+
+@mixin transform-bot {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#bot-eyes {
+  @include transform-bot;
+  animation: blink 4s ease-in-out 2s infinite both;
+  transform: rotateX(35deg);
+}
+
+#bot-head {
+  @include transform-bot;
+  animation: nod 4s ease-in-out 2s infinite both;
+  transform: rotateX(30deg);
+}
+
+#Bot_profile {
+  scale: 1.3;
+}

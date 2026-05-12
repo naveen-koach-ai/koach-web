@@ -1,0 +1,12 @@
+@if (onSubmitDiv) {
+  <ion-segment mode="md" class="px-3 d-flex segment-flashcards ion-align-items-center animate__fadeInUp" (ionChange)="onFlashcardSelect($event)">
+    @for (flashcard of question?.flashcards; track flashcard) {
+      <ion-segment-button layout="icon-start" [value]="flashcard" [ngStyle]="{'--background': flashcard.is_crct_ans === highestIsCorrectAns ? '#d5fff2' : 'var(--ion-color-white)'}">
+        @if (commonService.isValidData(flashcard.fc_image_link)) {
+          <img [src]="flashcard?.fc_image_link" style="width: 50px; height: 50px;" />
+        }
+        <p [ngClass]="{'fw-semi-bold': selectedItem.fc_display_text === flashcard.fc_display_text}" [innerHTML]="flashcard.fc_display_text"></p>
+      </ion-segment-button>
+    }
+  </ion-segment>
+}

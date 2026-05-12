@@ -50,9 +50,8 @@ export class ApiService {
         .post(API_ENDPOINTS.SIGNUP_FQUE, payload)
         .pipe(catchError(this.handleError))
     ).then((res: any) => {
-      this.userService.user$.next(res.user);
-      localStorage.setItem('auth_token', res.token);
-      localStorage.setItem('auth_user', JSON.stringify(res.user));
+      sessionStorage.setItem('token', res.token);
+      sessionStorage.setItem('user', JSON.stringify(res.user));
       return res;
     }).catch((err: any) => {
       throw err;
@@ -95,13 +94,109 @@ export class ApiService {
     );
   }
 
-  
+  getExploreThemes(): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.MISCELLAENOUS_CONV);
+    return firstValueFrom(
+      this.requestManager
+        .get(API_ENDPOINTS.MISCELLAENOUS_CONV)
+        .pipe(catchError(this.handleError))
+    );
+  }
 
-  logout(): void {
+  getPreAssessmentQuestions(exp: number): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.PRE_ASSESSMENT);
+    return firstValueFrom(
+      this.requestManager
+        .get(`${API_ENDPOINTS.PRE_ASSESSMENT}/${exp}`)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  closePreAssessmentSession(questions: any[]): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.PRE_ASSESSMENT_SESSION_CLOSE);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.PRE_ASSESSMENT_SESSION_CLOSE, { questions })
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getSessionReport(conv_uuid: string, cur_uuid: string, act_id: string): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.SESSION_REPORT);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.SESSION_REPORT, { conv_uuid, cur_uuid, act_id })
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getStrengthAspirationReport(ms_id: string): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.ST_ASP_REPORT);
+    return firstValueFrom(
+      this.requestManager
+        .get(`${API_ENDPOINTS.ST_ASP_REPORT}/${ms_id}`)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getConsolidatedFeedbackReport(payload: { conv_uuid: string; act_id: string; type: string }): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.CONSOLIDATED_FEEDBACK_REPORT);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.CONSOLIDATED_FEEDBACK_REPORT, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getGrowModel(cur_uuid: string): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.GROW_MODEL);
+    return firstValueFrom(
+      this.requestManager
+        .get(`${API_ENDPOINTS.GROW_MODEL}/${cur_uuid}`)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getOverallValues(): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.OVERALL_VALUES);
+    return firstValueFrom(
+      this.requestManager
+        .get(API_ENDPOINTS.OVERALL_VALUES)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getBulkQuestions(payload: any): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.MISCELLAENOUS_BULK_QUES);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.MISCELLAENOUS_BULK_QUES, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  submitBulkResponses(payload: any): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.MISCELLAENOUS_BULK_RESP);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.MISCELLAENOUS_BULK_RESP, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  shareReport(payload: any): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.SHARE_REPORT);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.SHARE_REPORT, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  logout(): Promise<void> {
     this.requestManager.switchEnv(API_ENDPOINTS.LOGOUT);
-    firstValueFrom(
+    return firstValueFrom(
       this.requestManager.put(API_ENDPOINTS.LOGOUT, {}).pipe(catchError(this.handleError))
-    ).catch(() => {});
-    this.userService.logout();
+    )
   }
 }

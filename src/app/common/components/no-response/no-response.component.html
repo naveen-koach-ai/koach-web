@@ -1,0 +1,21 @@
+<section class="chat-container" [ngStyle]="{'align-items': question.q_type_id === 'UR' ? 'flex-end' : 'flex-start'}">
+  <div [ngClass]="question.q_type_id === 'UR' ? 'user-callout animate__bounceInRight' : 'wizbot-callout animate__bounceInLeft'" class="animate__animated">
+    <div class="d-flex ion-align-items-center" style="gap: 0.8rem;">
+      <ion-img class="question-image mx-auto ion-margin-bottom" *ngIf="question?.media_link !== null && question?.media_link?.length > 0 
+        && question?.media_link.includes('png', 'jpg', 'jpeg')" [src]="question?.media_link" style="width: 85px; height: 85px;">
+      </ion-img>
+      
+      <ion-label [innerText]="question.q_text"></ion-label>
+    </div>
+
+    <ion-button size="small" fill="clear" color="dark" class="ion-float-end ion-no-margin translate-btn" (click)="translate(question.q_text)" *ngIf="!alreadyTranslated">
+      <ion-icon src="/assets/icons/translate-icon.svg" slot="start" class="fsize-16"></ion-icon>
+      {{commonService.translateCount | async}}
+    </ion-button>
+    <ion-button fill="clear" color="dark" style="display: block;" (click)="question.q_text = ogText; alreadyTranslated = !alreadyTranslated;" *ngIf="alreadyTranslated">
+      Back to English
+    </ion-button>
+    
+    <!-- <div class="chat-bubble-tail"></div> -->
+  </div>
+</section>

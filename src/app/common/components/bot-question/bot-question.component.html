@@ -1,0 +1,27 @@
+<section class="chat-container">
+  <div class="wizbot-callout animate__animated animate__bounceInLeft">
+    <ion-img class="question-image mx-auto ion-margin-bottom" *ngIf="(question?.q_type_id === 'FMQ' || question?.q_type_id === 'FIQ') && question?.q_media_link !== null && question?.q_media_link?.length > 0 
+      && question?.q_media_link.includes('png', 'jpg', 'jpeg') && !question?.flashcards[0].fc_image_link" [src]="question?.q_media_link">
+    </ion-img>
+    <img class="question-image mx-auto ion-margin-bottom" *ngIf="(question?.q_type_id === 'FMQ' || question?.q_type_id === 'FIQ') && question?.q_media_link !== null && question?.q_media_link?.length > 0 
+      && question?.q_media_link.includes('gif') && !question?.flashcards[0].fc_image_link" [src]="question?.q_media_link" /> 
+    <audio controls controlsList="nodownload" class="question-image mx-auto ion-margin-bottom" *ngIf="(question?.q_type_id === 'FMQ' || question?.q_type_id === 'FIQ') && question?.q_media_link !== null 
+      && question?.q_media_link?.length > 0 && question?.q_media_link.includes('mp3')">
+      <source [src]="question?.q_media_link" />
+    </audio>
+  
+    <ion-label [innerHTML]="question?.q_text || ''" [ngStyle]="{'direction': commonService.selectedLang.getValue() === 'ar' && alreadyTranslated ? 'rtl' : 'ltr'}"></ion-label>
+  
+    <ion-button size="small" fill="clear" color="dark" class="ion-float-end ion-no-margin translate-btn" (click)="translate(question.q_text)" *ngIf="!alreadyTranslated">
+      <ion-icon src="/assets/icons/translate-icon.svg" slot="start" class="fsize-16"></ion-icon>
+      {{commonService.translateCount | async}}
+    </ion-button>
+    <ion-button fill="clear" color="dark" style="display: block;" (click)="question.q_text = ogText; alreadyTranslated = !alreadyTranslated;" *ngIf="alreadyTranslated">
+      Back to English
+    </ion-button>
+
+    <!-- <div class="chat-bubble-tail"></div> -->
+  </div>
+
+  <app-flashcards [question]="question" class="animate__animated animate__delay-1s animate__bounceInUp" (selectedFlashcard)="selectedFlashcard($event)" *ngIf="!isFlashcardSelected"></app-flashcards>
+</section>

@@ -1,0 +1,300 @@
+.p-0 {
+  padding: 0;
+}
+
+.text-right {
+  text-align: right;
+}
+
+ion-button {
+  text-transform: none;
+}
+
+.btn-purple {
+  --background: linear-gradient(180deg, #8b45ff 0%, #0f0180 100%) 0% 0% no-repeat padding-box;
+}
+
+.generic__button {
+  --border-width: 1px;
+  --border-style: solid;
+  --border-radius: 30px;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  min-height: 40px;
+
+  &.btn-new {
+    --box-shadow: none !important;
+    --background: #20836b;
+    --border-color: #20836b;
+    --color: var(--ion-color-light);
+    --border-radius: 24px;
+    font-size: 14px;
+  }
+
+  &.btn-yellow {
+    --box-shadow: inset 0px 2px 0px 0px #fae7c4;
+    --background: linear-gradient(180deg, #ffd300 0%, #f6921e 100%);
+    --border-color: #d88119;
+    --color: #000000;
+  }
+  &.btn-green {
+    --box-shadow: none !important;
+    --background: #0fddc9;
+    --border-color: #89feda;
+    --color: #000000;
+  }
+  &.btn-grey {
+    --box-shadow: none !important;
+    --background: transparent linear-gradient(180deg, #c6c6c6 0%, #e5e5e5 100%);
+    --border-color: #c3c3c3;
+    --color: #000000;
+  }
+  &.btn-black {
+    // --background: linear-gradient(180deg, #ffd300 0%, #f6921e 100%);
+    --border-color: #000000;
+    --color: white;
+    --background: black !important;
+  }
+
+  &.btn-purple {
+    --background: var(--ion-color-light) !important;
+    --box-shadow: none;
+    --color: var(--ion-color-primary) !important;
+    --border-color: #6d22eb !important;
+  }
+
+  &.btn-purple-gradient {
+    --box-shadow: inset 0px 2px 0px 0px #d4c4fa;
+    --background: linear-gradient(180deg, #8b45ff 0%, #0f0180 100%) 0% 0% no-repeat padding-box;
+    --color: #fff;
+    --border-color: #6d00eb;
+  }
+
+  &.btn-blue-gradient {
+    --background: transparent linear-gradient(90deg, #c4e3ff 0%, #deefff 100%) 0% 0% no-repeat padding-box;
+    --box-shadow: none;
+    --color: #000;
+    --border-color: #91c0ff;
+  }
+
+  &.btn-white {
+    --box-shadow: none;
+    --background: #fff;
+    --border-color: #5500c9;
+    --color: #5500c9;
+  }
+
+  &.btn-white-yellow {
+    --box-shadow: none;
+    --background: #fff;
+    --border-color: #d88119;
+    --color: #000000;
+  }
+  &.btn-white-border {
+    --background: #fff;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: #1bce67;
+    text-transform: capitalize;
+    --color: var(--ion-color-dark);
+    margin: 0;
+  }
+
+  &.btn-blue-new {
+    --background: #253955;
+    --border-radius: 12px;
+    width: 85%;
+  }
+}
+
+.generic__box {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.flex-center-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-center,
+.flex-me {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-center-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-center-top-left {
+  display: flex;
+  align-items: baseline;
+}
+
+.flex-bottom-col-left {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+}
+
+.flex-center-col-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.flex-center-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.bg-transparent {
+  --background: transparent !important;
+  background: transparent !important;
+}
+
+.absolute-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.img-contain {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.flex-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.flex-me-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.flex-me-column-center {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.flex-me-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex-me-bottom-right {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.flex-me-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex-me-top-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-me-top-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-100 {
+  min-width: 100px;
+}
+
+.max-width {
+  max-width: 100% !important;
+}
+
+.loader {
+  backdrop-filter: blur(3px);
+  --background: white !important;
+
+  @media only screen and (min-height: 840px) {
+    --height: 35% !important;
+  }
+
+  @media only screen and (max-height: 840px) {
+    --height: 45% !important;
+  }
+}
+
+.blue-to-black {
+  background: linear-gradient(180deg, #03004c 0%, #000000 100%) 0% 0% no-repeat padding-box;
+  --background: linear-gradient(180deg, #03004c 0%, #000000 100%) 0% 0% no-repeat padding-box;
+}
+
+.black-to-blue {
+  background: linear-gradient(180deg, #000000 0%, #03004c 100%) 0% 0% no-repeat padding-box;
+  --background: linear-gradient(180deg, #000000 0%, #03004c 100%) 0% 0% no-repeat padding-box;
+}
+
+.blue-to-black-midway {
+  background: linear-gradient(180deg, #03004c 45%, #000000 100%) 0% 0% no-repeat padding-box;
+  --background: linear-gradient(180deg, #03004c 45%, #000000 100%) 0% 0% no-repeat padding-box;
+}
+
+.black-to-blue-midway {
+  background: linear-gradient(180deg, #000000 45%, #03004c 100%) 0% 0% no-repeat padding-box;
+  --background: linear-gradient(180deg, #000000 45%, #03004c 100%) 0% 0% no-repeat padding-box;
+}
+
+.black-to-blue-circular {
+  background: radial-gradient(circle at 50% 60%, #03004c 15%, #000000 50%) 0% 0% no-repeat padding-box;
+  --background: radial-gradient(circle at 50% 60%, #03004c 15%, #000000 50%) 0% 0% no-repeat padding-box;
+}
+
+.bg-blue {
+  background: #03004c;
+  --background: #03004c;
+}
+
+.bg-black {
+  background: #000000;
+  --background: #000000;
+}

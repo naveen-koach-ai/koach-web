@@ -1,0 +1,13 @@
+<ion-content class="blue-to-black">
+  <div class="center-div ion-text-center">
+    <img [src]="passedData.flag === 'before' ? '/assets/images/personal-insight-interstitial.svg' : '/assets/images/complete.svg'" class="mb-exactly2rem" />
+
+    <p [innerHTML]="passedData.text" class="fsize-18"></p>
+
+    <ion-row>
+      <ion-col class="ion-no-padding ion-margin-vertical ion-text-center">
+        <ion-button shape="round" class="generic__button btn-yellow btn-w220 fw-semi-bold fsize-18" (click)="onDismiss()">Proceed</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

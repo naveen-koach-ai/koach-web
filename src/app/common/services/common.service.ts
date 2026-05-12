@@ -1,11 +1,10 @@
-import { Location } from '@angular/common';
-import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { BehaviorSubject, Subscription, timer } from 'rxjs';
 import { AlertTypeEnum, Regex } from '../constants/constants';
 import { NetworkService } from './network.service';
 import { GenericPopupModalPage } from '../modals/generic-popup-modal/generic-popup-modal.page';
+import { PersonalInsightsInterstitialPage } from '../modals/personal-insights-interstitial/personal-insights-interstitial.page';
 
 
 export interface ConfirmModalResponse {
@@ -41,6 +40,9 @@ export class CommonService  {
   public isSessionDeleted = new BehaviorSubject<boolean>(false);
   public sessionDeleted$ = this.isSessionDeleted.asObservable();
 
+  selectedLang = new BehaviorSubject<string | null>(null);
+  translateCount = new BehaviorSubject<number>(0);
+
   public alertButtonList: any[] = [{
     label: 'Okay',
     event: 'close-modal',
@@ -71,7 +73,7 @@ export class CommonService  {
       component: GenericPopupModalPage,
       componentProps: {
         alertType: AlertTypeEnum.Error,
-        image: '/assets/icon/error-types/error-icon.svg',
+        image: '/assets/icons/error-types/error-icon.svg',
         title: `${"No Internet Connection"}`,
         message: `${"Please check your connection and try again."}`,
       },
@@ -111,21 +113,6 @@ export class CommonService  {
     this.addLottieToLoading();
     await this.loading.present();
   };
-
-
-  showLoaderExtend = async (sourceUrl:string='') => {
-    this.loading = await this.loadingCtrl.create({
-      // message: 'Please Wait...',
-      keyboardClose: true,
-      spinner: null,
-      cssClass: 'custom-lottie-loading',
-    });
-    setTimeout(()=>{
-      this.addLottieToLoading(sourceUrl);
-    },300)
-    await this.loading.present();
-  };
-
 
   addLottieToLoading(sourceUrl='') {
     const loadingWrapper = document.querySelector('.loading-wrapper.ion-overlay-wrapper');
@@ -176,7 +163,7 @@ export class CommonService  {
           component: GenericPopupModalPage,
           componentProps: {
             alertType: AlertTypeEnum.Error,
-            image: '/assets/icon/error-types/error-icon.svg',
+            image: '/assets/icons/error-types/error-icon.svg',
             title: `${title}`,
             message: `${message}`,
             buttonList: buttonList,
@@ -198,7 +185,7 @@ export class CommonService  {
           component: GenericPopupModalPage,
           componentProps: {
             alertType: AlertTypeEnum.Warning,
-            image: '/assets/icon/error-types/warning-icon.svg',
+            image: '/assets/icons/error-types/warning-icon.svg',
             title: `${title}`,
             message: `${message}`,
             buttonList: buttonList,
@@ -220,7 +207,7 @@ export class CommonService  {
           component: GenericPopupModalPage,
           componentProps: {
             alertType: AlertTypeEnum.Information,
-            image: '/assets/icon/error-types/information-icon.svg',
+            image: '/assets/icons/error-types/information-icon.svg',
             title: `${title}`,
             message: `${message}`,
             buttonList: buttonList,
@@ -242,7 +229,7 @@ export class CommonService  {
           component: GenericPopupModalPage,
           componentProps: {
             alertType: AlertTypeEnum.Success,
-            image: '/assets/icon/error-types/success-icon.svg',
+            image: '/assets/icons/error-types/success-icon.svg',
             title: `${title}`,
             message: `${message}`,
             buttonList: [],
@@ -266,18 +253,6 @@ export class CommonService  {
         break;
     }
   };
-
-  navigateRoot(route?: string) {
-    this.navCtrl.navigateRoot(route ? route : '/dashboard');
-  }
-
-  navigateBack(route?: string) {
-    this.navCtrl.navigateBack(route ? route : '/dashboard');
-  }
-
-  navigatePop() {
-    this.navCtrl.pop();
-  }
 
   validateEmail(email: string) {
     const emailRegex = Regex.EMAIL_REGEX;
@@ -348,21 +323,25 @@ export class CommonService  {
     return uuidValue;
   }
 
-  async showToaster(
-    message: string,
-    buttons: any[] = [],
-    color: string = 'primary',
-    position: 'top' | 'bottom' | 'middle' = 'top',
-    duration: number = 3000
-  ) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: duration,
-      position: position,
-      color: color,
-      buttons: buttons.length ? buttons : undefined,
-      cssClass: 'custom-toast',
+  navigateForward(path: string, options: any = {}) {
+    this.navCtrl.navigateForward(path, options);
+  }
+
+  navigateBack(path: string, options: any = {}) {
+    this.navCtrl.navigateBack(path, options);
+  }
+
+  navigateRoot(path: string, options: any = {}) {
+    this.navCtrl.setDirection('root');
+    this.navCtrl.navigateRoot(path, options);
+  }
+
+  async openConversationIntroModal(text: string, flag: string) {
+    const modal = await this.modalCtrl.create({
+      component: PersonalInsightsInterstitialPage,
+      componentProps: { passedData: { text: text, flag: flag } },
     });
-    await toast.present();
+
+    modal.present();
   }
 }
