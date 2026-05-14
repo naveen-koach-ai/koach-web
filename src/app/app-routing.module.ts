@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'generic-popup-modal',
     loadChildren: () => import('./common/modals/generic-popup-modal/generic-popup-modal.module').then(m => m.GenericPopupModalPageModule)
   },
+  {
+    path: 'ask-for-feedback',
+    loadChildren: () => import('./pages/ask-for-feedback/ask-for-feedback.module').then((m) => m.AskForFeedbackPageModule),
+  },
 ];
 
 @NgModule({

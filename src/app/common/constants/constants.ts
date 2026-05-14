@@ -5,12 +5,15 @@ export enum AlertTypeEnum {
   Error,
 }
 
-export const Regex = {
-  EMAIL_REGEX: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-  PHONE_NUMBER_REGEX: /^[0-9\\-\\s]+$/,
-  NAME_REGEX: '^[a-zA-Z0-9_,\\- ]+$',
-  PASSWORD_REGEX: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/
+export const RegExPatterns = {
+  EMAIL: /^[a-zA-Z0-9._%+-]+@(?=.*[a-zA-Z])[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/,
+  PASSWORD: /^[A-Za-z\d~!@#$%^&*_./\-+=?]{6,20}$/,
+  PASSWORD_STRICT: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#%^&*_./<>\-+=?])[A-Za-z\d~!@#%^&*_./\-+=?]{6,20}$/,
+  DOB: /^(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])-\d{4}$/g,
+  NAME: /^[a-zA-Z][0-9a-zA-Z-_ ]+$/,
 };
+
+
 
 export const COACHEE_ROLE_ID = 'ADIDP8';
 
@@ -80,7 +83,11 @@ export const API_ENDPOINTS = {
   SEND_REPORT_BY_EMAIL: 'share/send-report',
   
   MISCELLAENOUS_BULK_QUES: `bulk-questions`,
-  MISCELLAENOUS_BULK_RESP: `misc-close-session`
+  MISCELLAENOUS_BULK_RESP: `misc-close-session`,
+  GET_REPORT_BY_EMAIL: 'share-by-email',
+
+  FEEDBACK_USERS: 'ask-feedback-users',
+  ASK_FEEDBACK: `ask-feedback`
 };
 
 export const FALLBACK_ERROR_MESSAGES_FOR_INTERCEPTORS = {

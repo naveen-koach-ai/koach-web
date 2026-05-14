@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { BehaviorSubject, Subscription, timer } from 'rxjs';
-import { AlertTypeEnum, Regex } from '../constants/constants';
+import { AlertTypeEnum, RegExPatterns } from '../constants/constants';
 import { NetworkService } from './network.service';
 import { GenericPopupModalPage } from '../modals/generic-popup-modal/generic-popup-modal.page';
 import { PersonalInsightsInterstitialPage } from '../modals/personal-insights-interstitial/personal-insights-interstitial.page';
@@ -255,7 +255,7 @@ export class CommonService  {
   };
 
   validateEmail(email: string) {
-    const emailRegex = Regex.EMAIL_REGEX;
+    const emailRegex = RegExPatterns.EMAIL;
 
     if (!email) {
       return { isValid: false, message: 'Email is empty' };

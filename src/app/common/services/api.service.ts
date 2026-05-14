@@ -184,11 +184,58 @@ export class ApiService {
     );
   }
 
+  getReportByEmail(payload: {
+    email_list: string[];
+    sh_uuid: string;
+    cur_uuid: string | null;
+    conv_uuid: string | null;
+    act_id: string;
+    report_type: string;
+    name: string;
+    avatar: string;
+    printable: string;
+    type?: string;
+  }): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.GET_REPORT_BY_EMAIL);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.GET_REPORT_BY_EMAIL, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
   shareReport(payload: any): Promise<any> {
     this.requestManager.switchEnv(API_ENDPOINTS.SHARE_REPORT);
     return firstValueFrom(
       this.requestManager
         .post(API_ENDPOINTS.SHARE_REPORT, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  getFeedbackUsers(conv_type_id: string): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.FEEDBACK_USERS);
+    return firstValueFrom(
+      this.requestManager
+        .get(`${API_ENDPOINTS.FEEDBACK_USERS}/${conv_type_id}`)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  askFeedback(payload: any): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.ASK_FEEDBACK);
+    return firstValueFrom(
+      this.requestManager
+        .post(API_ENDPOINTS.ASK_FEEDBACK, payload)
+        .pipe(catchError(this.handleError))
+    );
+  }
+
+  removeFeedbackUser(body: any): Promise<any> {
+    this.requestManager.switchEnv(API_ENDPOINTS.FEEDBACK_USERS);
+    return firstValueFrom(
+      this.requestManager
+        .put(API_ENDPOINTS.FEEDBACK_USERS, body)
         .pipe(catchError(this.handleError))
     );
   }

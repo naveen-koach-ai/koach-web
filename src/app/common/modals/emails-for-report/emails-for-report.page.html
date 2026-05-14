@@ -22,11 +22,17 @@
       </ion-row>
     </ion-radio-group>
     <ion-list class="ion-padding ion-margin-top" formArrayName="emails">
-      <ion-item lines="none" class="input ion-margin-bottom" *ngFor="let email of emails.controls; let i = index" [formGroupName]="i">
-        <ion-label>Email</ion-label>
-        <ion-input type="email" formControlName="email" placeholder="Enter email"></ion-input>
-        <ion-icon name="trash" color="danger" (click)="delete(i)" *ngIf="emails.length > 1"></ion-icon>
-      </ion-item>
+      <ng-container *ngFor="let email of emails.controls; let i = index">
+        <ion-item lines="none" class="input ion-margin-bottom" [formGroupName]="i">
+          <ion-label>Email</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="Enter email"></ion-input>
+          <ion-icon name="trash" color="danger" (click)="delete(i)" *ngIf="emails.length > 1"></ion-icon>
+        </ion-item>
+        <ion-text color="danger" *ngIf="email.get('email')?.invalid && email.get('email')?.dirty">
+          <small *ngIf="email.get('email')?.hasError('required')" style="padding-left: 16px">Email is required</small>
+          <small *ngIf="email.get('email')?.hasError('pattern')" style="padding-left: 16px">Please enter a valid email address</small>
+        </ion-text>
+      </ng-container>
     </ion-list>
 
     <ion-row>
@@ -38,7 +44,7 @@
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="addGuest()">
+  <ion-fab-button (click)="addGuest()" [disabled]="!emails.at(emails.length - 1).valid">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

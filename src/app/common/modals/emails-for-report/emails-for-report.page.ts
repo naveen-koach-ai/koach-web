@@ -5,6 +5,8 @@ import { ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';
 
 import { CommonService } from '../../services/common.service';
+import { AlertTypeEnum, RegExPatterns, StatusCodes } from '../../constants/constants';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-emails-for-report',
@@ -24,9 +26,10 @@ export class EmailsForReportPage implements OnInit {
   sendingReport: boolean = false;
 
   constructor(
-    private modalCtrl: ModalController,
     private formBuilder: FormBuilder,
     private commonService: CommonService,
+    private apiService: ApiService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -44,7 +47,7 @@ export class EmailsForReportPage implements OnInit {
 
   addGuest() {
     const guest = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,8}$/i)])),
+      email: new FormControl('', Validators.compose([Validators.required, Validators.pattern(RegExPatterns.EMAIL)])),
     });
     this.emails.push(guest);
   }
@@ -73,13 +76,22 @@ export class EmailsForReportPage implements OnInit {
       printable: this.selectedRadio === 'printer' ? 'true' : 'false',
     };
 
-    if (this.conversation.hasOwnProperty('type')) {
-      payload = { ...payload, type: this.conversation.type.toUpperCase() };
-    }
+    if (this.conversation.hasOwnProperty('type')) 
+    payload = { ...payload, type: this.conversation.type.toUpperCase() };
 
-    this.sendingReport = true;
-    this.commonService.showToast('Your report will be sent across shortly');
-    this.onDismiss();
+     this.apiService.getReportByEmail(payload).then((resp: any) => {
+        if (resp.status === StatusCodes.PK_SUCCESS) {
+          this.sendingReport = true;
+          this.commonService.showAlert(AlertTypeEnum.Success, '',  resp.message || 'Good job! Your report will be sent across shortly', this.commonService.alertButtonList);
+          this.onDismiss();
+        }
+        else {
+          this.commonService.showAlert(AlertTypeEnum.Error, '', resp.message || 'Sorry, something went wrong. Please try again later.', this.commonService.alertButtonList);
+        }
+      })
+      .catch((err: any) => {
+        this.commonService.showAlert(AlertTypeEnum.Error, '', err.message || 'Sorry, something went wrong. Please try again later.', this.commonService.alertButtonList);
+      })
   }
 
   delete(index: number) {
