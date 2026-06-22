@@ -1,0 +1,41 @@
+.skip-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 8px 0;
+}
+
+.button-position {
+  position: relative;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8%);
+}
+
+.submit-button {
+  --background: #34d603;
+  --color: var(--ion-color-white);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+ion-footer {
+  background: linear-gradient(180deg, #6400D8 0%, #1A00A7 100%) 0% 0% no-repeat padding-box;
+  color: var(--ion-color-light);
+  padding: 3% 5%;
+}
+
+app-progressbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+ion-title {
+  color: var(--ion-color-light);
+}
+
+.question-block {
+  height: 80%;
+}

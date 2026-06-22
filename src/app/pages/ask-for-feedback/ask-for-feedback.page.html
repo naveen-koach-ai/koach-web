@@ -1,0 +1,290 @@
+<ion-header class="ion-no-border" #header>
+  <ion-toolbar mode="ios" class="bg-black"  [ngStyle]="{'padding-top': device_details?.platform === 'ios' ? 'var(--ion-safe-area-top, 0)': '0'}">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="segment === 'second' ? segment = 'first' : goBack()">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="black-to-blue ion-padding">
+
+  <!-- <div>
+    <ion-label color="light" class="fsize-18 fw-semi-bold">Self Assessment</ion-label>
+    <div class="glass-morph">
+      <p style="color: var(--ion-color-light);">Embark on the journey of self-reflection, a pivotal step in uncovering one's growth and room for improvement.</p>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" shape="round" class="generic__button btn-yellow fw-semi-bold" (click)="goToSelf('session')" *ngIf="selfAssessmentObject.conv_status !== 'FN'; else finishedConvStatus">
+            Start the session
+            <ion-icon name="chevron-forward" slot="end" color="dark"></ion-icon>
+          </ion-button>
+          <ng-template #finishedConvStatus>
+            <ion-button expand="block" shape="round" class="generic__button btn-yellow fw-semi-bold" (click)="goToSelf('report')">
+              Report
+              <ion-icon name="chevron-forward" slot="end" color="dark"></ion-icon>
+            </ion-button>
+          </ng-template>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div> -->
+
+  <div class="ion-text-center mb-4">
+    <img [src]="conversation.conv_image" />
+    <ion-label class="ion-padding-start fsize-20 fw-semi-bold" color="neon-blue">{{ activeTab }} Assessment Feedback</ion-label>
+  </div>
+
+  <!-- <ion-label color="light" class="fsize-18 fw-semi-bold my-3">Peoples Feedback</ion-label> -->
+
+  <div class="ion-align-items-center my-3 flex-me">
+        <app-wizbot-profile [scaleValue]="'1.3'" [ex2]="'scale'" class="bot-avatar" [width]="60"
+            [height]="60" id="prompt">
+        </app-wizbot-profile>
+
+        @if (activeTab === 'Pre') {
+          <app-callout [question]="'Invite your peers, team and manager to give you feedback to help uncover gaps in your performance that become the basis of your change'" fsize="fsize-16" fweight="initial" [pos]="'spout-left'">
+          </app-callout>
+        } @else {
+          <app-callout [question]="'Check in with your key stakeholders on how they think you have progressed and changed'" fsize="fsize-16" fweight="initial" [pos]="'spout-left'">
+          </app-callout>
+        }
+    </div>
+
+  <main>
+    @switch (segment) {
+      @case ('first') {
+        <section>
+          <div>
+
+            <div>
+              <div class="folder-tabs ion-text-center" style="display: none;">
+                <span class="fw-semi-bold fsize-18" style="color: black;" [ngClass]="activeTab === 'Pre' ? 'glass-morph' : 'dark-morph'"
+                  (click)="changeTab('Pre')">Pre-Program</span>
+                <span class="fw-semi-bold fsize-18" style="color: black;" [ngClass]="activeTab === 'Post' ? 'glass-morph' : 'dark-morph'"
+                  (click)="changeTab('Post')">Post-Program</span>
+              </div>
+
+              @if (activeTab === 'Pre') {
+                <div class="folder-content flex-me-column ion-no-margin" style="min-height: 57vh;"
+                  [ngStyle]="{'border-radius': activeTab === 'Pre' ? '10px 10px 10px 10px' : '10px 10px 10px 10px'}">
+                  @if (isFeedbackConversationAvailable()) {
+                    <div>
+                      @if (numberOfPeopleGivenPREFeedback.length >= 2 && conversation.conv_status === 'FN') {
+                        <ion-row>
+                          <ion-col size="12">
+                            <ion-text class="fsize-15" color="neon-blue">{{ numberOfPeopleGivenPREFeedback.length }} people have
+                              given you
+                              feedback</ion-text>
+                            <ion-button expand="block" shape="round" class="generic__button btn-white-yellow fw-semi-bold mb-2"
+                              (click)="goTo('reportConsolidated')">
+                              View Feedback
+                            </ion-button>
+                          </ion-col>
+                        </ion-row>
+                      }
+                      <div class="grid-people">
+                        @for (cell of people; track $index; let i = $index) {
+                          <ion-icon name="person-circle" [color]="getIconColor(i)"
+                            ></ion-icon>
+                        }
+                      </div>
+
+                      <ion-label color="light" class="font-myriad-pro fsize-15">Feedback requested from {{ peopleForPREFeedback.length }}/{{ maxNumberOfPeopleForPREFeedback }} People
+                      </ion-label>
+
+                      <ion-row>
+                        <ion-col size="12">
+                          <ion-button expand="block" shape="round" class="generic__button btn-yellow fw-semi-bold"
+                            (click)="segment = 'second'">
+                            Ask for feedback
+                          </ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  } @else {
+                    <ion-label color="light" class="fsize-16">This feature is presently not accessible for you. Please reach your HR/ admin to get access.</ion-label>
+                  }
+                </div>
+              } @else {
+                <div class="folder-content glass-morph flex-me-column ion-no-margin" style="height: 57vh;"
+                  [ngStyle]="{'border-radius': activeTab === 'Pre' ? '10px 10px 10px 10px' : '10px 10px 10px 10px'}">
+                  @if (isPostFeedbackAvailable()) {
+                    <div>
+                      @if (checkPostFeedbackDate()) {
+                        <div>
+                          @if (numberOfPeopleGivenPOSTFeedback.length >= 2 && conversation.conv_status === 'FN') {
+                            <ion-row>
+                              <ion-col size="12">
+                                <ion-text color="neon-blue">{{ numberOfPeopleGivenPOSTFeedback.length }} people have given you
+                                  feedback</ion-text>
+                                <ion-button expand="block" shape="round" class="generic__button btn-white-yellow fw-semi-bold mb-2"
+                                  (click)="goTo('reportConsolidated')">
+                                  View Feedback
+                                </ion-button>
+                              </ion-col>
+                            </ion-row>
+                          }
+                          <div class="grid-people">
+                            @for (cell of POSTpeople; track $index; let i = $index) {
+                              <ion-icon name="person-circle"
+                                [color]="getIconColor(i)" class="fsize-48"></ion-icon>
+                            }
+                          </div>
+
+                          <ion-label color="light" class="font-myriad-pro fsize-15">Feedback requested {{ peopleForPOSTFeedback.length }}/{{ maxNumberOfPeopleForPOSTFeedback }} People
+                          </ion-label>
+
+                          <ion-row>
+                            <ion-col size="12">
+                              <ion-button expand="block" shape="round" class="generic__button btn-yellow fw-semi-bold"
+                                (click)="segment = 'second'">
+                                Ask for feedback
+                              </ion-button>
+                            </ion-col>
+
+                          </ion-row>
+                        </div>
+                      } @else {
+                        <p>{{ reasonForNotAllowingPostFeedback }}</p>
+                      }
+                    </div>
+                  } @else {
+                    <p>This feature is presently not accessible for you. Please reach your HR/ admin to get access.</p>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </section>
+      }
+      @case ('second') {
+        <section class="ion-margin-top">
+          @if (peopleForPREFeedback.length < maxNumberOfPeopleForPREFeedback) {
+            <div>
+              <p class="ion-margin-top" style="color: var(--ion-color-light);">Please provide info of the person you want
+                feedback from</p>
+
+              <form [formGroup]="namesForFeedbackForm" (ngSubmit)="onSubmit()">
+                <ion-grid class="glass-morph" style="padding: 5%;">
+                  <ion-row>
+                    <ion-col size="4" style="display: grid;" class="ion-align-items-center">
+                      <ion-label color="light">Name: </ion-label>
+                    </ion-col>
+                    <ion-col size="8">
+                      <ion-item lines="none" class="input">
+                        <ion-input type="text" formControlName="fdback_provider_name" placeholder="Enter Name"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="4" style="display: grid;" class="ion-align-items-center">
+                      <ion-label color="light">Email: </ion-label>
+                    </ion-col>
+                    <ion-col size="8">
+                      <ion-item lines="none" class="input">
+                        <ion-input type="email" formControlName="fdback_provider_email" placeholder="Enter Email"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="4" style="display: grid;" class="ion-align-items-center">
+                      <ion-label color="light">Relationship: </ion-label>
+                    </ion-col>
+                    <ion-col size="8">
+                      <ion-item lines="none" class="input">
+                        <ion-select formControlName="relationship" label="Relationship" placeholder="Select a relationship"
+                          interface="popover">
+                          @for (relation of relationships; track $index) {
+                            <ion-select-option [value]="relation">{{ relation
+                              }}</ion-select-option>
+                          }
+                        </ion-select>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row class="ion-margin-vertical">
+                    <ion-col size="12" class="ion-text-center">
+                      <ion-button type="submit" [disabled]="!namesForFeedbackForm.valid"  shape="round"
+                        class="generic__button btn-yellow fw-semi-bold btn-w220">
+                        Send Request
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </form>
+            </div>
+          }
+
+          @if (peopleForPREFeedback.length && activeTab === 'Pre') {
+            <div class="ion-padding-top">
+              <ion-label color="light" class="fsize-18 fw-semi-bold">List of feedback requestees</ion-label>
+
+              <ion-list class="ion-margin-top bg-transparent">
+                @for (person of peopleForPREFeedback; track $index; let i = $index) {
+                  <ion-item lines="none" class="bg-transparent">
+                    <ion-icon name="ellipse" slot="start" class="fsize-12" color="light"></ion-icon>
+                    <div class="text-alignment">
+                      <ion-label color="light" class="fsize-18">{{ person.fdback_provider_name }}</ion-label>
+                      <ion-icon
+                        [src]="person.fdback_status === 'Pending' ? '/assets/icons/status-pending-icon.svg' : '/assets/icons/status-confirmed-icon.svg'"
+                        slot="end" class="fsize-24"></ion-icon>
+                    </div>
+                    @if (person.fdback_status === 'Pending') {
+                      <ion-icon name="trash" color="danger" slot="end" (click)="onRemoveFromList(i)"></ion-icon>
+                    }
+                  </ion-item>
+                }
+              </ion-list>
+            </div>
+          }
+
+          @if (peopleForPOSTFeedback.length && activeTab === 'Post') {
+            <div class="ion-padding-top">
+              <ion-label color="light" class="fsize-18 fw-semi-bold">List of feedback requestees</ion-label>
+
+              <ion-list class="ion-margin-top bg-transparent">
+                @for (person of peopleForPOSTFeedback; track $index; let i = $index) {
+                  <ion-item lines="none" class="bg-transparent">
+                    <ion-icon name="ellipse" slot="start" class="fsize-12" color="light"></ion-icon>
+                    <div class="text-alignment">
+                      <ion-label color="light" class="fsize-18">{{ person.fdback_provider_name }}</ion-label>
+                      <ion-icon
+                        [src]="person.fdback_status === 'Pending' ? '/assets/icons/status-pending-icon.svg' : '/assets/icons/status-confirmed-icon.svg'"
+                        slot="end" class="fsize-24"></ion-icon>
+                    </div>
+                    @if (person.fdback_status === 'Pending') {
+                      <ion-icon name="trash" color="danger" slot="end" (click)="onRemoveFromList(i)"></ion-icon>
+                    }
+                  </ion-item>
+                }
+              </ion-list>
+            </div>
+          }
+        </section>
+      }
+    }
+  </main>
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-content class="ion-padding ion-text-center">
+      <ion-label class="fsize-20 fw-semi-bold">Self Assessment</ion-label>
+      <p class="ion-margin">You are required to complete your self assessment to view the feedback</p>
+
+      <ion-row class="ion-margin-vertical">
+        <ion-col size="12">
+          <ion-button expand="block" shape="round" class="generic__button btn-yellow fw-semi-bold"
+            (click)="goTo('session'); isModalOpen = !isModalOpen;">
+            Start the session
+            <ion-icon name="chevron-forward" slot="end" color="dark"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>

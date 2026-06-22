@@ -1,0 +1,88 @@
+.glass-morph {
+  // margin-top: 1rem;
+  padding: 8%;
+  // background: rgba(255, 255, 255, 0.31);
+  // background:#2c2864;
+  border-radius: 8px;
+}
+
+.dark-morph {
+  // margin-top: 1rem;
+  padding: 8%;
+  background: black;
+  border-radius: 8px;
+  color: black;
+}
+
+.text-alignment {
+  display: flex;
+  justify-content: space-between;
+  width: 55vw;
+}
+
+.folder-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  color: var(--ion-color-light);
+
+  span {
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+  }
+}
+
+.folder-content {
+  background-color: #2c2864;
+  margin-top: 0 !important;
+  text-align: center;
+  height: 57vh;
+
+  p {
+    color: var(--ion-color-light);
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+}
+
+.grid-people {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 1rem;
+  place-items: center;
+  padding: 0.5rem;
+  column-gap: 0.5rem;
+
+  ion-icon{
+    font-size: 50px;
+  }
+}
+
+.grey {
+  color: var(--ion-color-medium);
+}
+.white {
+  color: var(--ion-color-light);
+}
+.green {
+  color: var(--ion-color-success);
+}
+
+ion-modal {
+  --width: 80%;
+  --height: 32%;
+  --border-radius: 12px;
+}
+
+// @media screen and (height < 935px) and (height > 840px) {
+
+//   .top-margin{
+//     top:37%
+//   }
+// }
+
+//   @media screen and (height = 896px) {
+//   .top-margin{
+//     top:35%
+//   }
+// }

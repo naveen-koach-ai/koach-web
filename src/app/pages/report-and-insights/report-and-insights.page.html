@@ -1,0 +1,136 @@
+<ion-content class="black-to-blue">
+  <aside class="curved-sticky-top ion-text-center" [ngStyle]="device_details?.platform === 'ios' ? {'padding-top': 'var(--ion-safe-area-top, 0)', 'height': '6rem'} : null">
+    <app-profile-with-halo [props]="{'width':'125px', height:'125px', enableGradientBorder: true}" [user]="user" id="image-scale-down" [ngStyle]="device_details?.platform === 'ios' ? {'top': '28%'} : null"></app-profile-with-halo>
+  </aside>
+
+  <section class="pt-6 ion-text-center">
+    <h3 class="fsize-18 fw-semi-bold" [innerHTML]="conversation.ms_id === 'ST' ? 'Each dichotomy represents a facet of your working style' : conversation.ms_id === 'ASP' ? 'This is how your motivations stack up. Click on each to know more.' : reportText[0]"></h3>
+
+    <ion-card [ngStyle]="{'background': conversation.ms_id === 'GROW' ? 'var(--ion-color-light)' : '#ffffff36'}">
+      <ion-card-content [ngSwitch]="conversation.ms_id">
+        <aside *ngSwitchCase="'ST'">
+          <ion-row class="mb-5" *ngFor="let chartVal of dichotomyGraph">
+            <ion-col size="6" class="ion-no-padding dichotomy-graph">
+              <span class="ion-float-left">{{chartVal.comp_name}}</span>
+              <ion-progress-bar [value]="(chartVal.percentage === 100 ? 90 : chartVal.percentage === 0 ? 10 : chartVal.percentage) / 100" reversed="true"></ion-progress-bar>
+            </ion-col>
+            <ion-col size="6" class="ion-no-padding dichotomy-graph">
+              <span class="ion-float-right">{{chartVal.dichotomy_name}}</span>
+              <ion-progress-bar [value]="(chartVal.dichotomy_percentage === 100 ? 90 : chartVal.dichotomy_percentage === 0 ? 10 : chartVal.dichotomy_percentage) / 100" style="border-left: 1px solid var(--ion-color-primary-shade);"></ion-progress-bar>
+            </ion-col>
+          </ion-row>
+        </aside>
+
+        <aside *ngSwitchCase="'ASP'">
+          <ion-accordion-group [value]="openedAccordion" (ionChange)="accordionGroupChange($event)">
+            <ion-accordion class="bg-transparent ion-margin-vertical" *ngFor="let report of barGraph; let i = index" [value]="i">
+              <ion-row slot="header">
+                <ion-col class="ion-no-padding">
+                  <ion-label class="ion-float-left" style="color: #0FDDC9;">{{ report.comp_ele_name }}</ion-label>
+                  <ion-progress-bar [value]="(report.percentage === 100 ? 90 : report.percentage === 0 ? 10 : report.percentage) / 100" style="border-radius: 10px;"></ion-progress-bar>
+                </ion-col>
+              </ion-row>
+
+              <ion-row slot="content" class="mt-2">
+                <ion-col class="ion-text-left">
+                  <ion-text color="light" [innerHTML]="report.comp_desc"></ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-accordion>
+          </ion-accordion-group>
+        </aside>
+
+        <aside *ngSwitchCase="'OB-PR'">
+          <ion-accordion-group [value]="openedAccordion" (ionChange)="accordionGroupChange($event)">
+            <ion-accordion class="bg-transparent ion-margin-vertical" *ngFor="let report of report.reportData; let i = index" [value]="i">
+              <ion-row slot="header">
+                <ion-col class="ion-no-padding" *ngIf="!conversation.hasOwnProperty('consolidated'); else consolidatedReport">
+                  <ion-label class="ion-float-left" style="color: #0FDDC9;">{{ report.comp_name }}</ion-label>
+                  <ion-progress-bar [value]="(report.percentage === 100 ? 90 : report.percentage === 0 ? 10 : report.percentage) / 100" style="border-radius: 10px;"></ion-progress-bar>
+                </ion-col>
+                <ng-template #consolidatedReport>
+                  <ion-col>
+                    <ion-row>
+                      <ion-col size="12">
+                        <ion-label class="ion-float-left" style="color: #0FDDC9;">{{ report.comp_name }}</ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="2">
+                        <ion-label color="light">Self</ion-label>
+                      </ion-col>
+                      <ion-col size="10">
+                        <ion-progress-bar [value]="(report.self_percentage === 100 ? 90 : report.self_percentage === 0 ? 10 : report.self_percentage) / 100" style="border-radius: 10px;"></ion-progress-bar>  
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="2">
+                        <ion-label color="light">All</ion-label>
+                      </ion-col>
+                      <ion-col size="10" *ngIf="conversation.type === 'Pre'">
+                        <ion-progress-bar [value]="(report.pre_all_percentage === 100 ? 90 : report.pre_all_percentage === 0 ? 10 : report.pre_all_percentage) / 100" style="border-radius: 10px;" class="consolidated-progressbar"></ion-progress-bar>  
+                      </ion-col>
+                      <ion-col size="10" *ngIf="conversation.type === 'Post'">
+                        <ion-progress-bar [value]="(report.post_all_percentage === 100 ? 90 : report.post_all_percentage === 0 ? 10 : report.post_all_percentage) / 100" style="border-radius: 10px;" class="consolidated-progressbar"></ion-progress-bar>  
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ng-template>
+              </ion-row>
+
+              <ion-row slot="content" class="mt-2">
+                <ion-col class="ion-text-left">
+                  <ion-text color="light" [innerHTML]="report.comp_desc"></ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-accordion>
+          </ion-accordion-group>
+        </aside>
+
+        <aside *ngSwitchCase="['skills', 'pillars'].includes(conversation.ms_id) ? conversation.ms_id : !conversation.ms_id">
+          <ion-accordion-group [value]="openedAccordion" (ionChange)="accordionGroupChange($event)">
+            <ion-accordion class="bg-transparent ion-margin-vertical" *ngFor="let report of report.reportData; let i = index" [value]="i">
+              <ion-row slot="header">
+                <ion-col class="ion-no-padding">
+                  <ion-label class="ion-float-left" style="color: #0FDDC9;">{{ report.comp_name }}</ion-label>
+                  <ion-progress-bar [value]="report.percentage / 100" style="border-radius: 10px;"></ion-progress-bar>
+                </ion-col>
+              </ion-row>
+
+              <ion-row slot="content" class="mt-2">
+                <ion-col class="ion-text-left">
+                  <ion-text color="light" [innerHTML]="report.comp_desc"></ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-accordion>
+          </ion-accordion-group>
+        </aside>
+      </ion-card-content>
+    </ion-card>
+
+    <p style="color: var(--ion-color-light);" class="fsize-15 ion-margin" [innerHTML]="conversation.ms_id === 'ASP' ? 'Our motivations are an important part of our personality. They guide us across interactions.' : reportText[1]"></p>
+  </section>
+
+  <section class="ion-text-center mt-6">
+    <h3 class="fsize-18 fw-semi-bold" [innerHTML]="reportText[2]"></h3>
+
+    <img src="/assets/images/download-report.svg" />
+
+    <ion-row class="ion-margin-vertical">
+      <ion-col size="12" class="ion-text-center ion-padding-top" *ngIf="!showShareButton">
+        <ion-button *ngIf="conversation.ms_id !=='skills'" shape="round" class="generic__button btn-yellow fw-semi-bold btn-w220" color="warning" (click)="toggleShareButtons()">Share</ion-button>
+      </ion-col>
+      <ion-col size="12" *ngIf="showShareButton" class="ion-text-center">
+        <ion-button shape="round" class="generic__button btn-white-yellow fw-semi-bold btn-w220" color="light" (click)="onShare('report', conversation.ms_id)" [disabled]="conditionMatched">
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          Share a Detailed Report
+        </ion-button>
+      </ion-col>
+      <ion-col size="12" class="ion-padding-top ion-text-center">
+        <ion-button shape="round" mode="ios" class="fsize-17 generic__button btn-purple btn-w220" (click)="back()">
+          Go Back
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </section>
+</ion-content>

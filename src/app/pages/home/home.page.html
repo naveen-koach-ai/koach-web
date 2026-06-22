@@ -1,0 +1,115 @@
+<app-page-header [platform]="device_details?.platform" [showBackButton]="false"></app-page-header>
+<ion-content class="black-to-blue">
+  <div class="ion-align-items-center my-3 flex-me">
+    <app-wizbot-profile [scaleValue]="wizbotEyesAnimation" [ex2]="wizbotScaling" class="bot-avatar" [width]="60" [height]="60" id="prompt"> </app-wizbot-profile>
+
+    <app-callout *ngIf="promptText" [question]="promptText" fsize="fsize-16" fweight="initial" [pos]="'spout-left'"> </app-callout>
+  </div>
+
+  <div class="flex-me" *ngIf="developmentDimensionsObject?.conv_status !== 'FN'">
+    <ion-label color="neon-blue" class="fsize-20 fw-bold">How I See Myself ?</ion-label>
+  </div>
+
+  <div class="box p-3 m-2 flex-me-column" *ngIf="developmentDimensionsObject?.conv_status !== 'FN'">
+    <div class="flex-me-column">
+      <div class="w-100 flex-me">
+        <ion-label color="warning" class="fsize-20 fw-bold">Self Assessment</ion-label>
+      </div>
+
+      <div class="flex-me">
+        <ion-icon name="stats-chart" color="light" class="self-icon mr-2"></ion-icon>
+        <ion-label color="light" class="fsize-16"
+          >Your self-assessment captures how you rate yourself across the dimensions that matter most. Revisit it to track how your self-view evolves over time.</ion-label
+        >
+      </div>
+    </div>
+
+    <ion-button shape="round" size="small" class="generic__button btn-yellow" style="min-height: 28px" (click)="goToConversation(developmentDimensionsObject)">{{
+      developmentDimensionsObject?.conv_status === "FN" ? "Report" : "Start"
+    }}</ion-button>
+  </div>
+
+  <div class="flex-me">
+    <ion-label color="neon-blue" class="fsize-20 fw-bold">Who am I ?</ion-label>
+  </div>
+
+  <div class="box p-3 m-2 flex-me-column" [ngClass]="{ 'looks-disabled': developmentDimensionsObject?.conv_status !== 'FN' }">
+    <div class="flex-me">
+      <ion-label color="warning" class="fsize-18 fw-bold">My Work Style</ion-label>
+    </div>
+    <div class="flex-me">
+      <img src="assets/images/reflect-img.svg" class="mr-3" />
+      <ion-label color="light" class="fsize-16">Explore your different work orientations and discover how they shape the way you show up — in how you think, collaborate, and get things done.</ion-label>
+    </div>
+    <ion-button shape="round" size="small" class="generic__button btn-yellow" (click)="goToConversation(workPlaceObject)" style="min-height: 28px">{{
+      workPlaceObject?.conv_status === "FN" ? "Report" : "Start"
+    }}</ion-button>
+  </div>
+
+  <div class="box p-3 m-2 flex-me-column" [ngClass]="{ 'looks-disabled': developmentDimensionsObject?.conv_status !== 'FN' }">
+    <div class="flex-me">
+      <ion-label color="warning" class="fsize-18 fw-bold">What drives me</ion-label>
+    </div>
+    <div class="flex-me">
+      <img src="assets/images/measure-img.svg" class="mr-3" />
+      <ion-label color="light" class="fsize-16"
+        >Uncover what truly motivates you — and which motivations take priority when they compete. Knowing this helps you make choices that align with who you are.</ion-label
+      >
+    </div>
+    <ion-button shape="round" size="small" class="generic__button btn-yellow" (click)="goToConversation(personalMotivationObject)" style="min-height: 28px">{{
+      personalMotivationObject?.conv_status === "FN" ? "Report" : "Start"
+    }}</ion-button>
+  </div>
+
+  <div class="flex-me" *ngIf="developmentDimensionsObject?.conv_status === 'FN'">
+    <ion-label color="neon-blue" class="fsize-20 fw-bold">How I See Myself ?</ion-label>
+  </div>
+
+  <div class="box p-3 m-2 flex-me-column" *ngIf="developmentDimensionsObject?.conv_status === 'FN'">
+    <div class="flex-me-column">
+      <div class="w-100 flex-me">
+        <ion-label color="warning" class="fsize-20 fw-bold">Self Assessment</ion-label>
+      </div>
+
+      <div class="flex-me">
+        <ion-icon name="stats-chart" color="light" class="self-icon mr-2"></ion-icon>
+        <ion-label color="light" class="fsize-16"
+          >Your self-assessment captures how you rate yourself across the dimensions that matter most. Revisit it to track how your self-view evolves over time.</ion-label
+        >
+      </div>
+    </div>
+
+    <ion-button shape="round" size="small" class="generic__button btn-yellow" (click)="goToConversation(developmentDimensionsObject)" style="min-height: 28px">{{
+      developmentDimensionsObject?.conv_status === "FN" ? "Report" : "Start"
+    }}</ion-button>
+  </div>
+
+  <div class="flex-me">
+    <ion-label color="neon-blue" class="fsize-20 fw-bold">How others see me ?</ion-label>
+  </div>
+
+  <div class="flex-me-column" [ngClass]="{ 'looks-disabled': developmentDimensionsObject?.conv_status !== 'FN' }">
+    <div class="box p-3 m-2 d-flex flex-column ion-align-items-center w-exactly-95">
+      <div class="d-flex">
+        <img src="assets/icons/pre-icon.svg" class="mr-3" width="50px" height="50px" />
+        <div class="d-flex flex-column ion-align-items-start ion-justify-content-start">
+          <ion-label class="fsize-18" color="warning">Pre Assessment</ion-label>
+          <ion-label color="light" class="fsize-16">Invite your peers, team and manager to give you feedback to help uncover gaps in your performance that become the basis of your change</ion-label>
+        </div>
+      </div>
+
+      <ion-button (click)="goToPreAssessment()" class="generic__button btn-yellow" shape="round" size="small" style="min-height: 28px">Start</ion-button>
+    </div>
+    <div class="box p-3 m-2 d-flex flex-column ion-align-items-center w-exactly-95">
+      <div class="d-flex ion-align-items-start ion-justify-content-start">
+        <img src="assets/icons/post-icon.svg" class="mr-3" width="50px" height="50px" />
+        <div class="d-flex flex-column ion-align-items-start ion-justify-content-start">
+          <ion-label class="fsize-18" color="warning">Post Assessment</ion-label>
+          <ion-label color="light" class="fsize-16">Check in with your key stakeholders on how they think you have progressed and changed</ion-label>
+        </div>
+      </div>
+
+      <ion-button style="min-height: 28px" class="generic__button btn-yellow" shape="round" size="small" (click)="goToPostAssessment()">Start</ion-button>
+    </div>
+  </div>
+</ion-content>

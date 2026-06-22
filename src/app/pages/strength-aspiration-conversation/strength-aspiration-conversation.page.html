@@ -1,0 +1,27 @@
+<app-page-header [platform]="device_details?.platform" [title]="title | titlecase" (backClick)="onBack()"></app-page-header>
+
+<ion-content>
+  <div *ngFor="let question of currentQuestionArray; let i = index">
+    <div [ngSwitch]="question?.q_type_id" class="top-container">
+      <div class="question-block" id="question-image-text" *ngSwitchCase="['FQ', 'FMQ', 'FIQ'].includes(question?.q_type_id) ? question?.q_type_id : !question?.q_type_id">
+        <app-question [question]="question" [difficultyIncreaseFlag]="difficultyIncreaseFlag" class="animate__animated animate__fadeIn"></app-question>
+
+        <div class="p-3" id="flashcardPills">
+          <app-flashcards [question]="question" [onSubmitDiv]="true" [translateButtonColor]="'light'" (selectedFlashcard)="onFlashcardSelect($event)"></app-flashcards>
+        </div>
+      </div>
+    </div>
+
+    <ion-row class="button-position">
+      <ion-col class="ion-text-center" style="margin-top: 15%;">
+        <ion-button shape="round" size="small" class="submit-button btn-w170 fw-semi-bold" [disabled]="disabledBtn" [ngClass]="{'grey-scale': disabledBtn}" (click)="onSubmit()">
+          Submit
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <app-progressbar [ngClass]="{'ion-padding-bottom' : device_details?.platform === 'ios'}" [session]="{question_count: this.listOfQuestions.length}" [currentQuestionIndex]="currentQuestionIndex"></app-progressbar>
+</ion-footer>

@@ -1,0 +1,29 @@
+<app-page-header title="Explore Career Dimensions" [noBorder]="true" (backClick)="onBack()"></app-page-header>
+
+<ion-content class="blue-to-black">
+  @if (isTesting) {
+    <div class="skip-btn-wrapper">
+      <ion-button fill="clear" color="light" (click)="skipPreAssessment()">Skip</ion-button>
+    </div>
+  }
+  <div class="question-block">
+    <app-question [question]="question" [difficultyIncreaseFlag]="false"></app-question>
+
+    <div class="p-3">
+      <app-flashcards [question]="question" [onSubmitDiv]="onSubmitDiv" (selectedFlashcard)="onFlashcardSelect($event)"></app-flashcards>
+    </div>
+  </div>
+
+  <ion-row class="button-position">
+    <ion-col class="ion-text-center" style="margin-top: 85px">
+      <ion-button shape="round" size="small" class="submit-button btn-w170 fw-semi-bold" [disabled]="disabledBtn" [ngClass]="{'grey-scale': disabledBtn}" (click)="onSubmit()"> Submit </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+    <app-progressbar
+      [session]="{ question_count: this.listOfQuestions.length }"
+      [currentQuestionIndex]="currentQuestionIndex"
+    ></app-progressbar>
+</ion-footer>

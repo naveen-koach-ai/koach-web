@@ -1,0 +1,339 @@
+<ion-content [fullscreen]="true" class="auth-content">
+
+  <!-- Decorative background blobs -->
+  <div class="page-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="auth-wrapper">
+
+    <!-- Branding -->
+    <div class="auth-header">
+      <div class="logo-circle">
+        <img src="assets/images/logo-koachup.png" alt="Koach logo" class="logo-img" />
+      </div>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="segment-container">
+      <ion-segment [value]="activeSegment" (ionChange)="onSegmentChange($event)" mode="ios">
+        <ion-segment-button value="login">
+          <ion-label>Login</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="signup">
+          <ion-label>Sign Up</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <!-- ── LOGIN FORM ── -->
+    @if (activeSegment === 'login') {
+      <div class="form-card">
+
+        @if (!showForgotPassword) {
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form">
+
+            <!-- Email -->
+            <div class="form-field">
+              <ion-item
+                [class.field-invalid]="lf['email'].touched && lf['email'].invalid"
+                lines="none"
+                class="input-item"
+              >
+                <ion-icon name="mail-outline" slot="start" class="field-icon"></ion-icon>
+                <ion-input
+                  formControlName="email"
+                  type="email"
+                  label="Email address"
+                  labelPlacement="floating"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                ></ion-input>
+              </ion-item>
+              @if (lf['email'].touched && lf['email'].errors) {
+                <p class="error-msg">
+                  @if (lf['email'].errors['required']) { Email is required. }
+                  @else if (lf['email'].errors['email']) { Enter a valid email address. }
+                </p>
+              }
+            </div>
+
+            <!-- Password -->
+            <div class="form-field">
+              <ion-item
+                [class.field-invalid]="lf['password'].touched && lf['password'].invalid"
+                lines="none"
+                class="input-item"
+              >
+                <ion-icon name="lock-closed-outline" slot="start" class="field-icon"></ion-icon>
+                <ion-input
+                  formControlName="password"
+                  [type]="showLoginPassword ? 'text' : 'password'"
+                  label="Password"
+                  labelPlacement="floating"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                ></ion-input>
+                <ion-button
+                  fill="clear"
+                  slot="end"
+                  (click)="showLoginPassword = !showLoginPassword"
+                  class="toggle-btn"
+                  aria-label="Toggle password visibility"
+                >
+                  <ion-icon
+                    [name]="showLoginPassword ? 'eye-off-outline' : 'eye-outline'"
+                    slot="icon-only"
+                  ></ion-icon>
+                </ion-button>
+              </ion-item>
+              @if (lf['password'].touched && lf['password'].errors) {
+                <p class="error-msg">
+                  @if (lf['password'].errors['required']) { Password is required. }
+                  @else if (lf['password'].errors['minlength']) { Password must be at least 6 characters. }
+                </p>
+              }
+            </div>
+
+            <div class="forgot-row">
+              <ion-button fill="clear" size="small" class="forgot-btn" (click)="showForgotPassword = true">
+                Forgot password?
+              </ion-button>
+            </div>
+
+            <ion-button expand="block" type="submit" class="submit-btn">
+              Login
+              <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+            </ion-button>
+
+          </form>
+        }
+
+        @if (showForgotPassword) {
+          <form [formGroup]="forgotPasswordForm" (ngSubmit)="onForgotPassword()" class="auth-form">
+
+            <p class="forgot-title">Enter your email and we'll send you a reset link.</p>
+
+            <div class="form-field">
+              <ion-item
+                [class.field-invalid]="ff['email'].touched && ff['email'].invalid"
+                lines="none"
+                class="input-item"
+              >
+                <ion-icon name="mail-outline" slot="start" class="field-icon"></ion-icon>
+                <ion-input
+                  formControlName="email"
+                  type="email"
+                  label="Email address"
+                  labelPlacement="floating"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                ></ion-input>
+              </ion-item>
+              @if (ff['email'].touched && ff['email'].errors) {
+                <p class="error-msg">
+                  @if (ff['email'].errors['required']) { Email is required. }
+                  @else if (ff['email'].errors['email']) { Enter a valid email address. }
+                </p>
+              }
+            </div>
+
+            <ion-button expand="block" type="submit" class="submit-btn ion-margin-bottom">
+              Submit
+            </ion-button>
+
+            <ion-button expand="block" fill="clear" class="back-btn" (click)="showForgotPassword = false">
+              <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+              Back to Login
+            </ion-button>
+
+          </form>
+        }
+
+      </div>
+    }
+
+    <!-- ── SIGNUP FORM ── -->
+    @if (activeSegment === 'signup') {
+      <div class="form-card">
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="auth-form">
+
+          <!-- Full Name -->
+          <div class="form-field">
+            <ion-item
+              [class.field-invalid]="sf['name'].touched && sf['name'].invalid"
+              lines="none"
+              class="input-item"
+            >
+              <ion-icon name="person-outline" slot="start" class="field-icon"></ion-icon>
+              <ion-input
+                formControlName="name"
+                type="text"
+                label="Full name"
+                labelPlacement="floating"
+                placeholder="John Doe"
+                autocomplete="name"
+              ></ion-input>
+            </ion-item>
+            @if (sf['name'].touched && sf['name'].errors) {
+              <p class="error-msg">
+                @if (sf['name'].errors['required']) { Full name is required. }
+                @else if (sf['name'].errors['minlength']) { Name must be at least 2 characters. }
+              </p>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="form-field">
+            <ion-item
+              [class.field-invalid]="sf['email'].touched && sf['email'].invalid"
+              lines="none"
+              class="input-item"
+            >
+              <ion-icon name="mail-outline" slot="start" class="field-icon"></ion-icon>
+              <ion-input
+                formControlName="email"
+                type="email"
+                label="Email address"
+                labelPlacement="floating"
+                placeholder="you@example.com"
+                autocomplete="email"
+                (ionBlur)="checkValidEmail($event)"
+              ></ion-input>
+            </ion-item>
+            @if (sf['email'].touched && sf['email'].errors) {
+              <p class="error-msg">
+                @if (sf['email'].errors['required']) { Email is required. }
+                @else if (sf['email'].errors['email']) { Enter a valid email address. }
+              </p>
+            }
+          </div>
+
+          <!-- Experience -->
+          <div class="form-field">
+            <ion-item
+              [class.field-invalid]="sf['exp'].touched && sf['exp'].invalid"
+              lines="none"
+              class="input-item"
+            >
+              <ion-icon name="bar-chart-outline" slot="start" class="field-icon"></ion-icon>
+              <ion-select
+                formControlName="exp"
+                label="Experience"
+                labelPlacement="floating"
+                placeholder="Select years of experience"
+                interface="action-sheet"
+              >
+                @for (item of experienceList; track item.exp) {
+                  <ion-select-option [value]="item.exp">{{ item.exp }}</ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+            @if (sf['exp'].touched && sf['exp'].errors?.['required']) {
+              <p class="error-msg">Experience is required.</p>
+            }
+          </div>
+
+          <!-- Institution -->
+          <div class="form-field">
+            <ion-item lines="none" class="input-item">
+              <ion-icon name="business-outline" slot="start" class="field-icon"></ion-icon>
+              <ion-input
+                formControlName="institution"
+                type="text"
+                label="Institution"
+                labelPlacement="floating"
+                placeholder="Your institution or company"
+              ></ion-input>
+            </ion-item>
+          </div>
+
+          <!-- Referral Code -->
+          <div class="form-field">
+            <div class="ref-code-row">
+              <ion-item
+                [class.field-invalid]="sf['ref_code'].touched && sf['ref_code'].invalid"
+                [class.field-verified]="sf['codeVerified'].value"
+                lines="none"
+                class="input-item ref-code-item"
+              >
+                <ion-icon name="gift-outline" slot="start" class="field-icon"></ion-icon>
+                <ion-input
+                  formControlName="ref_code"
+                  type="text"
+                  label="Referral code"
+                  labelPlacement="floating"
+                  placeholder="Enter referral code"
+                  (ionInput)="onRefCodeChange()"
+                ></ion-input>
+              </ion-item>
+              <ion-button
+                class="verify-btn"
+                [disabled]="!sf['ref_code'].value || sf['codeVerified'].value"
+                (click)="verifyCode()"
+              >
+                @if (sf['codeVerified'].value) { Verified }
+                @else { Verify }
+              </ion-button>
+            </div>
+            @if (sf['ref_code'].touched && sf['ref_code'].errors?.['required']) {
+              <p class="error-msg">Referral code is required.</p>
+            }
+            @if (sf['codeVerified'].value) {
+              <p class="code-success">
+                <ion-icon name="checkmark-circle-outline"></ion-icon> {{ organization }}
+              </p>
+            }
+          </div>
+
+          <!-- Password -->
+          <div class="form-field">
+            <ion-item
+              [class.field-invalid]="sf['password'].touched && sf['password'].invalid"
+              lines="none"
+              class="input-item"
+            >
+              <ion-icon name="lock-closed-outline" slot="start" class="field-icon"></ion-icon>
+              <ion-input
+                formControlName="password"
+                [type]="showSignupPassword ? 'text' : 'password'"
+                label="Password"
+                labelPlacement="floating"
+                placeholder="Min 8 chars, upper, lower & number"
+                autocomplete="new-password"
+              ></ion-input>
+              <ion-button
+                fill="clear"
+                slot="end"
+                (click)="showSignupPassword = !showSignupPassword"
+                class="toggle-btn"
+                aria-label="Toggle password visibility"
+              >
+                <ion-icon
+                  [name]="showSignupPassword ? 'eye-off-outline' : 'eye-outline'"
+                  slot="icon-only"
+                ></ion-icon>
+              </ion-button>
+            </ion-item>
+            @if (sf['password'].touched && sf['password'].errors) {
+              <p class="error-msg">
+                @if (sf['password'].errors['required']) { Password is required. }
+                @else if (sf['password'].errors['minlength']) { Password must be at least 8 characters. }
+                @else if (sf['password'].errors['pattern']) { Must include uppercase, lowercase, and a number. }
+              </p>
+            }
+          </div>
+
+          <ion-button expand="block" type="submit" class="submit-btn">
+            Create Account
+            <ion-icon name="checkmark-circle-outline" slot="end"></ion-icon>
+          </ion-button>
+
+        </form>
+      </div>
+    }
+
+  </div>
+</ion-content>
