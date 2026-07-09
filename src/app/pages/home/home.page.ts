@@ -105,6 +105,7 @@ export class HomePage {
 
           window.sessionStorage.setItem('exploreData', JSON.stringify(this.exploreData));
           this.reportTextArray = resp.data.report_text;
+          window.sessionStorage.setItem('reportTextArray', JSON.stringify(this.reportTextArray));
           this.personalMotivationObject = conversations.find((item: any) => item.alt_name === 'Personal Motivations');
           this.workPlaceObject = conversations.find((item: any) => item.alt_name === 'Work Place Preferences');
           this.developmentDimensionsObject = conversations.find((item: any) => item.alt_name === 'Development Dimensions');

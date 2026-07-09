@@ -32,7 +32,7 @@
     </div>
   </div> -->
 
-  <div class="ion-text-center mb-4">
+  <div class="ion-text-center  mb-4 image-div">
     <img [src]="conversation.conv_image" />
     <ion-label class="ion-padding-start fsize-20 fw-semi-bold" color="neon-blue">{{ activeTab }} Assessment Feedback</ion-label>
   </div>
@@ -73,7 +73,7 @@
                   @if (isFeedbackConversationAvailable()) {
                     <div>
                       @if (numberOfPeopleGivenPREFeedback.length >= 2 && conversation.conv_status === 'FN') {
-                        <ion-row>
+                        <ion-row class="ion-align-items-center">
                           <ion-col size="12">
                             <ion-text class="fsize-15" color="neon-blue">{{ numberOfPeopleGivenPREFeedback.length }} people have
                               given you
@@ -85,12 +85,11 @@
                           </ion-col>
                         </ion-row>
                       }
-                      <div class="grid-people">
+                      <ion-grid class="grid-people">
                         @for (cell of people; track $index; let i = $index) {
-                          <ion-icon name="person-circle" [color]="getIconColor(i)"
-                            ></ion-icon>
+                          <ion-icon name="person-circle" [color]="getIconColor(i)"></ion-icon>
                         }
-                      </div>
+                      </ion-grid>
 
                       <ion-label color="light" class="font-myriad-pro fsize-15">Feedback requested from {{ peopleForPREFeedback.length }}/{{ maxNumberOfPeopleForPREFeedback }} People
                       </ion-label>

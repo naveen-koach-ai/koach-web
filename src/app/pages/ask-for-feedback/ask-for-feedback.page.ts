@@ -64,7 +64,6 @@ export class AskForFeedbackPage implements OnInit {
   constructor() {
     this.activatedRoute.queryParams.subscribe((params) => {
       const feedbackType = this.router.getCurrentNavigation()?.extras?.state?.['feedback'];
-      console.log('Received feedback type:', feedbackType);
       this.changeTab(feedbackType === 'post' ? 'Post' : 'Pre');
     });
   }
@@ -78,7 +77,9 @@ export class AskForFeedbackPage implements OnInit {
       this._buildForm(userData);
     }
 
-    this.jwtObject = this.userService.jwtValue.getValue();
+   this.userService.jwtValue.subscribe((jwt) => {
+    this.jwtObject = jwt;
+   });
   }
 
   getExploreData() {
@@ -231,7 +232,7 @@ export class AskForFeedbackPage implements OnInit {
         return;
       }
 
-      this.commonService.navigateForward('personal-insight-report', {
+      this.commonService.navigateForward('report-and-insights', {
         state:
           flag === 'reportConsolidated'
             ? {

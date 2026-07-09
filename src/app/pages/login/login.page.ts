@@ -154,8 +154,7 @@ export class LoginPage implements OnInit {
             window.sessionStorage.setItem('user', JSON.stringify(loginResponse));
             window.sessionStorage.setItem('token', loginResponse.token);
             this.userService.tokenValue.next(loginResponse.token);
-            const decodedValues = await this.userService.decodingJWTValues(loginResponse.token);
-            this.userService.jwtValue.next(decodedValues);
+            await this.userService.decodingJWTValues(loginResponse.token);
           }
           
           this.commonService.showAlert(AlertTypeEnum.Success, '', res.message || 'Login successful!');

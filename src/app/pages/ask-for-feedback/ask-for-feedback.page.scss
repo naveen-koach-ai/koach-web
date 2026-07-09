@@ -74,6 +74,12 @@ ion-modal {
   --border-radius: 12px;
 }
 
+.image-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 // @media screen and (height < 935px) and (height > 840px) {
 
 //   .top-margin{
