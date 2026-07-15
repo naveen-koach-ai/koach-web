@@ -12,6 +12,11 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
+  // {
+  //   path: 'login',
+  //   loadChildren: () =>
+  //     import('./pages/login/login.module').then(m => m.LoginPageModule)
+  // },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
@@ -39,7 +44,11 @@ const routes: Routes = [
   {
     path: 'ask-for-feedback',
     loadChildren: () => import('./pages/ask-for-feedback/ask-for-feedback.module').then((m) => m.AskForFeedbackPageModule),
+  },  {
+    path: 'slack-login',
+    loadChildren: () => import('./pages/slack-login/slack-login.module').then( m => m.SlackLoginPageModule)
   },
+
 ];
 
 @NgModule({

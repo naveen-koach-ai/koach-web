@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../common/services/api.service';
 import { CommonService } from '../../common/services/common.service';
 import { AlertTypeEnum, StatusCodes } from '../../common/constants/constants';
 import { jwtDecode } from "jwt-decode";
 import { UserService } from 'src/app/common/services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/common/services/user.service';
   styleUrls: ['./login.page.scss'],
   standalone: false,
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
   activeSegment: 'login' | 'signup' = 'login';
   showLoginPassword = false;
   showSignupPassword = false;
@@ -25,7 +26,7 @@ export class LoginPage implements OnInit {
   signupForm!: FormGroup;
   forgotPasswordForm!: FormGroup;
 
-  experienceList: any[] = [ 
+  experienceList: any[] = [
         {
             "exp": "0"
           },
@@ -51,10 +52,37 @@ export class LoginPage implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private commonService: CommonService,
-    private userService: UserService
+    private userService: UserService,
+    private route: ActivatedRoute
   ) {}
 
+      loginSource: string | null = null;
+    slackUserId: string | null = null;
+    teamId: string | null = null;
+
+    // Track subscription to prevent leaks
+  private paramSub!: Subscription;
+
   ngOnInit() {
+    console.log("href>>", window.location.href);
+    console.log("routee>>", this.route);
+    // FIX: Listen to the active stream instead of a static snapshot
+    this.paramSub = this.route.queryParamMap.subscribe(params => {
+      this.loginSource = params.get('source');
+      this.slackUserId = params.get('slackUserId');
+      this.teamId = params.get('teamId');
+
+      console.log('Parsed Query Data:', {
+        source: this.loginSource,
+        user: this.slackUserId,
+        team: this.teamId
+      });
+
+      if (this.loginSource === 'slack' && this.slackUserId) {
+        console.log('handle slack SSO.');
+      }
+    });
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -157,14 +185,14 @@ export class LoginPage implements OnInit {
             const decodedValues = await this.userService.decodingJWTValues(loginResponse.token);
             this.userService.jwtValue.next(decodedValues);
           }
-          
+
           this.commonService.showAlert(AlertTypeEnum.Success, '', res.message || 'Login successful!');
           this.loginForm.reset();
           setTimeout(() => {
             this.router.navigate(['/home']);
           }, 1000);
-          
-        } 
+
+        }
         else if (res.code === StatusCodes.PK_LIMIT_EXCEEDED) {
           this.commonService.showAlert(AlertTypeEnum.Error, '', res.message || 'Too many login attempts. Please try again later.', this.commonService.alertButtonList);
         }
@@ -241,4 +269,8 @@ export class LoginPage implements OnInit {
     if (exp.includes('+')) return parseInt(exp, 10);
     return parseInt(exp, 10);
   };
+
+  ngOnDestroy(): void {
+    this.paramSub.unsubscribe(); // Unsubscribe to prevent memory leaks
+  }
 }
