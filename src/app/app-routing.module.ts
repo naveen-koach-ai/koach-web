@@ -44,10 +44,11 @@ const routes: Routes = [
   {
     path: 'ask-for-feedback',
     loadChildren: () => import('./pages/ask-for-feedback/ask-for-feedback.module').then((m) => m.AskForFeedbackPageModule),
-  },  {
-    path: 'slack-login',
-    loadChildren: () => import('./pages/slack-login/slack-login.module').then( m => m.SlackLoginPageModule)
   },
+  // {
+  //   path: 'slack-login',
+  //   loadChildren: () => import('./pages/slack-login/slack-login.module').then( m => m.SlackLoginPageModule)
+  // },
 
 ];
 
