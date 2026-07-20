@@ -212,7 +212,7 @@ export class LoginPage implements OnInit, OnDestroy {
             // res.redirect(
             //   `slack://app?team=${this.teamId}&id=${this.slackUserId}`,
             // );
-            window.location.href = `slack://app?team=${this.teamId}&id=${this.slackUserId}`;
+            window.location.href = `slack://app?team=${this.teamId}&id=${this.slackUserId}&token=${loginResponse.token}`;
             return;
           }
           if (loginResponse && loginResponse.token) {
